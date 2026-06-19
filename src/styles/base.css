@@ -1,0 +1,23 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Raleway', sans-serif;
+  background: var(--off-white);
+  color: var(--text);
+  line-height: 1.6;
+}
+
+html { scroll-behavior: smooth; }
+
+button { cursor: pointer; border: none; background: none; font: inherit; }
+a { text-decoration: none; }
+img { display: block; max-width: 100%; }
+ul { list-style: none; }
+
+.igc-root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
