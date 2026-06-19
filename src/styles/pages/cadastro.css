@@ -1,0 +1,192 @@
+/* Classes exclusivas de CadastroPage.jsx
+   (as classes auth-*, page-auth, auth-bg, auth-center, auth-card,
+   auth-title, auth-field, auth-input, auth-btn, auth-switch, auth-link
+   estão em shared.css)
+*/
+
+.cadastro-wrapper {
+  display: flex;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 16px 48px rgba(0,0,0,0.35);
+  width: 100%;
+  max-width: 860px;
+  min-height: 520px;
+  background: #eef0f3;
+  position: relative;
+}
+
+.cadastro-form-panel {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  transition: transform 0.5s ease;
+  position: relative;
+  z-index: 1;
+}
+
+.cadastro-auth-card {
+  box-shadow: none;
+  background: transparent;
+  max-width: 100%;
+  padding: 0;
+}
+
+.cadastro-switch-panel {
+  width: 320px;
+  flex-shrink: 0;
+  background: var(--secondary-dark);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background 0.3s;
+  position: relative;
+  overflow: hidden;
+}
+.cadastro-switch-panel::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse at center, rgba(240,107,29,0.15) 0%, transparent 70%);
+}
+.cadastro-switch-panel:hover { background: var(--primary-dark); }
+
+.cadastro-switch-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.25rem;
+  z-index: 1;
+}
+
+.cadastro-switch-label {
+  color: rgba(255,255,255,0.85);
+  font-size: 1.1rem;
+  font-weight: 600;
+  text-align: center;
+  white-space: pre-line;
+}
+
+.cadastro-wrapper.flipped .cadastro-form-panel { order: 2; }
+.cadastro-wrapper.flipped .cadastro-switch-panel { order: 1; }
+
+.igc-cadastro-main {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 48px 16px;
+  background: #243046;
+  background-image: url('/src/assets/images/bg.gif');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+.igc-cadastro-wrapper {
+  display: flex;
+  width: 100%;
+  max-width: 880px;
+  border-radius: 18px;
+  overflow: hidden;
+  transition: all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.igc-cadastro-wrapper[data-mode="facilitador"] { flex-direction: row-reverse; }
+
+.igc-cadastro-form-side {
+  background: var(--bg-card-light);
+  padding: 44px 44px 36px;
+  flex: 1.1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 0;
+}
+
+.igc-cadastro-form-side h1 {
+  font-size: 1.9rem;
+  font-weight: 700;
+  color: var(--text-dark);
+  margin-bottom: 28px;
+  letter-spacing: -0.5px;
+}
+
+.igc-cadastro-right {
+  background: var(--bg-dark-secondary);
+  flex: 0.9;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 48px 36px;
+  min-width: 0;
+}
+
+.igc-facilitator-icon-wrap {
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  background: #e0e0e0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 24px;
+}
+
+.igc-cadastro-right h2 {
+  color: var(--text-light-secondary);
+  font-size: 1.35rem;
+  font-weight: 700;
+  text-align: center;
+  line-height: 1.3;
+  letter-spacing: -0.3px;
+}
+
+.igc-facilitator-btn {
+  background: none;
+  border: none;
+  color: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+  cursor: pointer;
+  padding: 0;
+  transition: opacity 0.3s;
+}
+.igc-facilitator-btn:hover { opacity: 0.8; }
+
+.igc-login-link {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  margin-top: 14px;
+}
+.igc-login-link a {
+  color: var(--primary-orange);
+  text-decoration: underline;
+  cursor: pointer;
+  font-weight: 500;
+  background: none;
+  border: none;
+  font-family: inherit;
+  font-size: inherit;
+  padding: 0;
+}
+
+@media (max-width: 900px) {
+  .cadastro-wrapper { flex-direction: column; max-width: 440px; }
+  .cadastro-switch-panel { width: 100%; padding: 2rem; }
+  .cadastro-wrapper.flipped .cadastro-form-panel { order: 1; }
+  .cadastro-wrapper.flipped .cadastro-switch-panel { order: 2; }
+
+  .igc-cadastro-wrapper { flex-direction: column; }
+  .igc-cadastro-wrapper[data-mode="facilitador"] { flex-direction: column; }
+  .igc-cadastro-form-side { padding: 36px 24px 28px; }
+  .igc-cadastro-right { padding: 36px 24px; }
+  .igc-facilitator-icon-wrap { width: 110px; height: 110px; }
+}
+
+@media (max-width: 480px) {
+  .igc-cadastro-form-side h1 { font-size: 1.6rem; }
+}
