@@ -31,7 +31,7 @@ export default function LoginPage({ setPage }) {
               className="auth-input"
             />
             <button className="auth-show-pass" onClick={() => setShowSenha(s => !s)} tabIndex={-1}>
-              {showSenha ? '🙈' : '👁'}
+              {showSenha ? <img src="src/assets/icone-show.png" width="15" alt="Mostrar senha" /> : <img src="src/assets/icone-hide.png" width="15" alt="Esconder senha" />}
             </button>
           </div>
           <button className="auth-forgot" onClick={() => {}}>Esqueceu a senha?</button>
