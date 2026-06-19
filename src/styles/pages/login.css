@@ -1,0 +1,74 @@
+/* Classes exclusivas de LoginPage.jsx
+   (as classes auth-* compartilhadas estão em shared.css)
+*/
+
+.igc-login-page {
+  display: flex;
+  flex-direction: column;
+  min-height: calc(100vh - 60px);
+}
+
+.igc-login-main {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 16px;
+  background: #243046;
+  background-image: url('/src/assets/images/bg.gif');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+.igc-login-card {
+  background: #e8e8e8;
+  border-radius: 18px;
+  padding: 48px 52px;
+  width: 100%;
+  max-width: 440px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.igc-login-card h1 {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #2d3748;
+  margin-bottom: 32px;
+  letter-spacing: -0.5px;
+}
+
+.igc-forgot {
+  align-self: flex-start;
+  color: #1a2535;
+  font-size: 0.87rem;
+  cursor: pointer;
+  margin-bottom: 24px;
+  background: none;
+  border: none;
+  font-family: inherit;
+  padding: 0;
+}
+.igc-forgot:hover { text-decoration: underline; }
+
+.igc-register-link {
+  color: #555;
+  font-size: 0.8rem;
+  text-align: center;
+  line-height: 1.6;
+}
+.igc-register-link span {
+  color: #1a2535;
+  cursor: pointer;
+  font-weight: 500;
+  text-decoration: underline;
+}
+
+@media (max-width: 900px) {
+  .igc-login-card { padding: 36px 24px; }
+}
+@media (max-width: 480px) {
+  .igc-login-card h1 { font-size: 1.6rem; }
+}
