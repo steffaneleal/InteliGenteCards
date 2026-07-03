@@ -3,11 +3,11 @@ import Navbar from './components/Navbar'
 import LoginPage from './pages/LoginPage'
 import CadastroPage from './pages/CadastroPage'
 import HomePage from './pages/HomePage'
-import DashboardalunoPage from './pages/DashboardalunoPage'
+import DashboardestudantePage from './pages/DashboardestudantePage'
 import DashboardFacilitadorPage from './pages/DashboardFacilitadorPage'
 import DashboardSuperAdminPage from './pages/DashboardSuperAdminPage'
 
-const DASHBOARD_PAGES = ['dashboard-aluno', 'dashboard-facilitador', 'dashboard-admin']
+const DASHBOARD_PAGES = ['dashboard-estudante', 'dashboard-facilitador', 'dashboard-admin']
 
 export default function App() {
   const [page, setPage] = useState('home')
@@ -19,11 +19,11 @@ export default function App() {
   // TODO: remover quando a autenticação (JWT) estiver implementada
   const switchRole = () => {
     const next = {
-      'dashboard-aluno': 'dashboard-facilitador',
+      'dashboard-estudante': 'dashboard-facilitador',
       'dashboard-facilitador': 'dashboard-admin',
-      'dashboard-admin': 'dashboard-aluno',
+      'dashboard-admin': 'dashboard-estudante',
     }
-    setPage(next[page] || 'dashboard-aluno')
+    setPage(next[page] || 'dashboard-estudante')
   }
 
   return (
@@ -32,12 +32,12 @@ export default function App() {
         <Navbar page={page} setPage={setPage} mobileOpen={mobileOpen} setMobileOpen={setMobileOpen} />
       )}
 
-      {page === 'login'    && <LoginPage setPage={setPage} onLoginSuccess={() => setPage('dashboard-aluno')} />}
+      {page === 'login'    && <LoginPage setPage={setPage} onLoginSuccess={() => setPage('dashboard-estudante')} />}
       {page === 'cadastro' && <CadastroPage setPage={setPage} />}
       {page === 'home'     && <HomePage setPage={setPage} />}
 
-      {page === 'dashboard-aluno' && (
-        <DashboardalunoPage setPage={setPage} onSwitchRole={switchRole} />
+      {page === 'dashboard-estudante' && (
+        <DashboardestudantePage setPage={setPage} onSwitchRole={switchRole} />
       )}
       {page === 'dashboard-facilitador' && (
         <DashboardFacilitadorPage setPage={setPage} onSwitchRole={switchRole} />

@@ -18,6 +18,7 @@ import './styles/hero-card-flip.css'
 import './styles/pages/home.css'
 import './styles/pages/login.css'
 import './styles/pages/cadastro.css'
+import './styles/pages/dashboard.css'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
