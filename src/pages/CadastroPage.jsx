@@ -1,7 +1,8 @@
 import { useState } from 'react'
 import Footer from '../components/Footer'
-import { FacilitadorIcon, EstudanteIcon } from '../icons'
 import bgGif from '../assets/images/bg.gif'
+import estudanteImg from '../assets/Estudante.png'
+import facilitadorImg from '../assets/Facilitador.png'
 
 function EstudanteForm({ setPage, onSwitch }) {
   return (
@@ -62,8 +63,8 @@ export default function CadastroPage({ setPage }) {
           <div className="cadastro-switch-panel" onClick={() => setIsFacilitador(f => !f)}>
             <div className="cadastro-switch-inner">
               {isFacilitador
-                ? <img src="\src\assets\Estudante.png" width="130" alt="Estudante" />
-                : <img src="\src\assets\Facilitador.png" width="130" alt="Facilitador" />
+                ? <img src={estudanteImg} width="130" alt="Estudante" />
+                : <img src={facilitadorImg} width="130" alt="Facilitador" />
               }
             </div>
           </div>

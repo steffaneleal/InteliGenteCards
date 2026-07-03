@@ -2,7 +2,7 @@ import { useState } from 'react'
 import Footer from '../components/Footer'
 import bgGif from '../assets/images/bg.gif'
 
-export default function LoginPage({ setPage }) {
+export default function LoginPage({ setPage, onLoginSuccess }) {
   const [email, setEmail] = useState('')
   const [senha, setSenha] = useState('')
   const [showSenha, setShowSenha] = useState(false)
@@ -35,7 +35,7 @@ export default function LoginPage({ setPage }) {
             </button>
           </div>
           <button className="auth-forgot" onClick={() => {}}>Esqueceu a senha?</button>
-          <button className="btn-primary auth-btn">Entrar</button>
+          <button className="btn-primary auth-btn" onClick={() => onLoginSuccess?.()}>Entrar</button>
           <p className="auth-switch">
             Ainda não tem uma conta?{' '}
             <button className="auth-link" onClick={() => setPage('cadastro')}>Cadastre-se!</button>
