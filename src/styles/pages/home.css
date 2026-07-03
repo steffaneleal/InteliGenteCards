@@ -51,6 +51,10 @@
   line-height: 1.7;
 }
 
+.hero-card-inner {
+  box-shadow: 0 8px 28px rgba(255,255,255,0.10);
+}
+
 .hero-cta { font-size: 1rem; padding: 0.85rem 2.25rem; }
 
 .btn-primary-hero {
@@ -147,7 +151,15 @@
   transition: background 0.2s;
   user-select: none;
 }
-.trilha-item.open .trilha-header { border-bottom: 1px solid var(--tc, #ccc); }
+.trilha-item.open .trilha-header {
+  border-bottom: 1px solid var(--tc, #ccc);
+  background: var(--primary-dark);
+}
+.trilha-item.open .trilha-header .trilha-label,
+.trilha-item.open .trilha-header .trilha-title,
+.trilha-item.open .trilha-chevron {
+  color: #fff;
+}
 .trilha-header:hover { background: rgba(255,255,255,0.1); }
 
 .trilha-icon svg { display: block; }

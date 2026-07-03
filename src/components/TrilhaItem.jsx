@@ -1,6 +1,5 @@
 import { useState } from 'react'
 import { ChevronDownIcon } from '../icons'
-import inteligenteCard from '../assets/images/inteligente-card.png'
 
 export default function TrilhaItem({ trilha }) {
   const [open, setOpen] = useState(false)
@@ -10,7 +9,6 @@ export default function TrilhaItem({ trilha }) {
     <div className={`trilha-item${open ? ' open' : ''}`} style={{ '--tc': trilha.labelColor }}>
       <div
         className="trilha-header"
-        style={{ background: open ? trilha.bg : undefined }}
         onClick={toggle}
         role="button"
         aria-expanded={open}
@@ -34,7 +32,7 @@ export default function TrilhaItem({ trilha }) {
             <p>{trilha.desc2}</p>
           </div>
           <div className="trilha-sample-card">
-            <img src={inteligenteCard} alt={`Carta exemplo ${trilha.label}`} />
+            <img src={trilha.cardImage} alt={`Carta da trilha ${trilha.label}`} />
           </div>
         </div>
       )}

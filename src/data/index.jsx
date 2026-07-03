@@ -1,4 +1,8 @@
 import { IdeaIcon, EthicsIcon, DevIcon, DiscussIcon } from '../icons'
+import cardTrilha1 from '../assets/images/card-trilha1.png'
+import cardTrilha2 from '../assets/images/card-trilha2.png'
+import cardTrilha3 from '../assets/images/card-trilha3.png'
+import cardTrilha4 from '../assets/images/card-trilha4.png'
 
 export const TRILHAS = [
   {
@@ -8,6 +12,7 @@ export const TRILHAS = [
     borderColor: '#F79C5A',
     bg: '#fff9f5',
     icon: <IdeaIcon />,
+    cardImage: cardTrilha1,
     title: 'Desenvolver Ideias sobre Projetos ou Soluções em IA',
     desc1: 'Estruture o seu projeto, defina o impacto, a dificuldade e os diferenciais da sua solução.',
     desc2: 'A primeira trilha do jogo tem como objetivo estimular o questionamento sobre ideias sobre a eficiência da sua solução, quem será impactado, a dificuldade de desenvolvimento e os diferenciais.',
@@ -19,6 +24,7 @@ export const TRILHAS = [
     borderColor: '#FBD160',
     bg: '#fffdf0',
     icon: <EthicsIcon />,
+    cardImage: cardTrilha2,
     title: 'Princípios Éticos Básicos Aplicáveis à Solução',
     desc1: 'Explore os fundamentos éticos para construir soluções de IA justas, responsáveis e inclusivas.',
     desc2: 'Reflita sobre viés algorítmico, privacidade de dados, transparência e responsabilidade nas soluções de inteligência artificial.',
@@ -30,6 +36,7 @@ export const TRILHAS = [
     borderColor: '#f17419',
     bg: '#fff9f5',
     icon: <DevIcon />,
+    cardImage: cardTrilha3,
     title: 'Passos do Desenvolvimento de uma Solução de IA usando Aprendizado de Máquina',
     desc1: 'Entenda o ciclo completo de desenvolvimento: coleta de dados, treinamento, validação e implantação.',
     desc2: 'Percorra cada etapa prática do desenvolvimento de um modelo de machine learning com foco em boas práticas e qualidade.',
@@ -41,6 +48,7 @@ export const TRILHAS = [
     borderColor: '#F1A5C1',
     bg: '#fff5f9',
     icon: <DiscussIcon />,
+    cardImage: cardTrilha4,
     title: 'Princípios Éticos Básicos Aplicáveis à Solução',
     desc1: 'Provoque debates ricos e fundamentados sobre o impacto social das soluções de IA.',
     desc2: 'A trilha de discussão incentiva o diálogo plural, considerando diferentes perspectivas culturais, econômicas e sociais sobre a aplicação da inteligência artificial.',
