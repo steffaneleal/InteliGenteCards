@@ -9,8 +9,8 @@
 }
 
 .hero-card-container {
-  width: 280px;
-  height: 380px;
+  width: 275.22px;
+  height: 332.17px;
 }
 
 .hero-card-inner {
@@ -18,8 +18,13 @@
   height: 100%;
   position: relative;
   transform-style: preserve-3d;
-  animation: cardFlip 5s ease-in-out infinite;
+  transform: rotateZ(10deg);
+  transition: transform 1s ease;
   border-radius: 12px;
+}
+
+.hero-card-wrap:hover .hero-card-inner {
+  transform: rotateZ(15deg) rotateY(180deg);
 }
 
 .hero-card-front, .hero-card-back {
