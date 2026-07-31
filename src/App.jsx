@@ -3,7 +3,7 @@ import Navbar from './components/Navbar'
 import LoginPage from './pages/LoginPage'
 import CadastroPage from './pages/CadastroPage'
 import HomePage from './pages/HomePage'
-import DashboardestudantePage from './pages/DashboardestudantePage'
+import DashboardestudantePage from './pages/DashboardEstudantePage'
 import DashboardFacilitadorPage from './pages/DashboardFacilitadorPage'
 import DashboardSuperAdminPage from './pages/DashboardSuperAdminPage'
 

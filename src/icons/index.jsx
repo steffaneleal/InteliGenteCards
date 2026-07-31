@@ -333,6 +333,42 @@ export function ChevronRightIcon() {
   )
 }
 
+export function SearchIcon() {
+  return (
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <circle cx="11" cy="11" r="7"/>
+      <line x1="21" y1="21" x2="16.2" y2="16.2"/>
+    </svg>
+  )
+}
+
+export function AlertTriangleIcon() {
+  return (
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M12 3.5L22 20H2L12 3.5z"/>
+      <line x1="12" y1="10" x2="12" y2="14.5"/>
+      <line x1="12" y1="17.2" x2="12" y2="17.3"/>
+    </svg>
+  )
+}
+
+export function ChevronLeftIcon() {
+  return (
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+      <polyline points="15 6 9 12 15 18"/>
+    </svg>
+  )
+}
+
+export function CardStackIcon() {
+  return (
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <rect x="4" y="8" width="12" height="15" rx="2"/>
+      <path d="M8 8V5a2 2 0 012-2h8a2 2 0 012 2v13a2 2 0 01-2 2h-3"/>
+    </svg>
+  )
+}
+
 export function SparkleIcon() {
   return (
     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
