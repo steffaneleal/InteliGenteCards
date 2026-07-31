@@ -1,15 +1,49 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import Footer from '../components/Footer'
 import bgGif from '../assets/images/bg.gif'
 
 export default function LoginPage({ setPage, onLoginSuccess }) {
   const [email, setEmail] = useState('')
   const [senha, setSenha] = useState('')
+
+  useEffect(() => {
+    const target = document.querySelector('.auth-bg.finisher-header')
+    if (!target || target.querySelector('canvas')) return
+
+    const init = () => {
+      if (window.FinisherHeader) {
+        new window.FinisherHeader({
+          count: 10,
+          size: { min: 2, max: 45, pulse: 0.4 },
+          speed: { x: { min: 0, max: 0.8 }, y: { min: 0, max: 0.2 } },
+          colors: { background: '#253046', particles: ['#293d65'] },
+          blending: 'screen',
+          opacity: { center: 1, edge: 1 },
+          skew: -1,
+          shapes: ['c'],
+        })
+      }
+    }
+
+    if (window.FinisherHeader) {
+      init()
+      return
+    }
+
+    const checkTimer = window.setInterval(() => {
+      if (window.FinisherHeader) {
+        init()
+        window.clearInterval(checkTimer)
+      }
+    }, 100)
+
+    return () => window.clearInterval(checkTimer)
+  }, [])
   const [showSenha, setShowSenha] = useState(false)
 
   return (
     <div className="page-auth">
-      <div className="auth-bg" style={{ backgroundImage: `url(${bgGif})` }} />
+      <div className="auth-bg finisher-header"/>
       <div className="auth-center">
         <div className="auth-card">
           <h1 className="auth-title">Login</h1>

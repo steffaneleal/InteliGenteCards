@@ -1,3 +1,4 @@
+import { useEffect } from 'react'
 import { TRILHAS, FAQS, FUNCIONALIDADES } from '../data'
 import TrilhaItem from '../components/TrilhaItem'
 import FAQItem from '../components/FAQItem'
@@ -16,11 +17,45 @@ const FUNC_ICONS = {
 }
 
 export default function HomePage({ setPage }) {
+  useEffect(() => {
+    const target = document.querySelector('.hero-bg.finisher-header')
+    if (!target || target.querySelector('canvas')) return
+
+    const init = () => {
+      if (window.FinisherHeader) {
+        new window.FinisherHeader({
+          count: 10,
+          size: { min: 2, max: 45, pulse: 0.4 },
+          speed: { x: { min: 0, max: 0.8 }, y: { min: 0, max: 0.2 } },
+          colors: { background: '#253046', particles: ['#293d65'] },
+          blending: 'screen',
+          opacity: { center: 1, edge: 1 },
+          skew: -1,
+          shapes: ['c'],
+        })
+      }
+    }
+
+    if (window.FinisherHeader) {
+      init()
+      return
+    }
+
+    const checkTimer = window.setInterval(() => {
+      if (window.FinisherHeader) {
+        init()
+        window.clearInterval(checkTimer)
+      }
+    }, 100)
+
+    return () => window.clearInterval(checkTimer)
+  }, [])
+
   return (
     <div className="page-home">
       {/* HERO */}
       <section className="hero-section">
-        <div className="hero-bg" style={{ backgroundImage: `url(${bgGif})` }} />
+        <div className="hero-bg finisher-header" style={{ width: '100%', height: '100%' }}/>
         <div className="hero-content">
           <div className="hero-text">
             <h1 className="hero-title">
