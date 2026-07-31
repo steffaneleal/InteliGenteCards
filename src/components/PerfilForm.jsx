@@ -2,9 +2,11 @@ import { useState } from 'react'
 import { EyeOffIcon } from '../icons'
 
 /* Formulário de edição de perfil: dados pessoais + troca de senha. */
-export default function PerfilForm({ user, escolaLabel = 'Escola / Instituição' }) {
+export default function PerfilForm({ user, escolaLabel = 'Escola / Instituição', showEstadoCargo = false }) {
   const [nome, setNome] = useState(user.name)
   const [email, setEmail] = useState(user.email || '')
+  const [estado, setEstado] = useState(user.estado || '')
+  const [cargo, setCargo] = useState(user.cargo || '')
   const [escola, setEscola] = useState(user.escola || '')
 
   const [senhaAtual, setSenhaAtual] = useState('')
@@ -44,6 +46,18 @@ export default function PerfilForm({ user, escolaLabel = 'Escola / Instituição
             <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} />
           </label>
         </div>
+        {showEstadoCargo && (
+          <div className="dash-form-row">
+            <label>
+              Estado
+              <input type="text" value={estado} onChange={(e) => setEstado(e.target.value)} placeholder="Ex.: Paraná" />
+            </label>
+            <label>
+              Cargo / Função
+              <input type="text" value={cargo} onChange={(e) => setCargo(e.target.value)} placeholder="Ex.: Facilitador(a)" />
+            </label>
+          </div>
+        )}
         <label>
           {escolaLabel}
           <input type="text" value={escola} onChange={(e) => setEscola(e.target.value)} placeholder="Nome da sua escola ou instituição" />

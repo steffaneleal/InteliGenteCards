@@ -37,7 +37,7 @@ export const estudante_MOCK = {
 // ---------- Facilitador ----------
 
 export const FACILITADOR_MOCK = {
-  user: { name: 'Rosângela', initials: 'RM' },
+  user: { name: 'Rosângela', initials: 'RM', email: 'rosangela@escola.edu.br', estado: 'Paraná', cargo: 'Professora de Matemática' },
   stats: { eventosAtivos: 3, participantes: 87, projetosSubmetidos: 41, notaMedia: 8.4 },
   eventos: [
     { id: 1, nome: 'Workshop IA na Escola', visibilidade: 'PIN', pin: '4821', participantes: 32, status: 'Aberto' },

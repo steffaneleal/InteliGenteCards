@@ -34,7 +34,7 @@ export default function DashboardFacilitadorPage({ setPage, onSwitchRole }) {
       onSwitchRole={onSwitchRole}
     >
       {isPerfil ? (
-        <PerfilForm user={user} escolaLabel="Escola" />
+        <PerfilForm user={user} escolaLabel="Escola" showEstadoCargo />
       ) : (
         <>
           {/* Métricas */}
