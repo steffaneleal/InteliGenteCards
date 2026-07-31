@@ -157,7 +157,6 @@ export default function DashboardestudantePage({ setPage, onSwitchRole }) {
                           {p.status}
                         </span>
                       </td>
-                      <td><button className="dash-table-action">Abrir</button></td>
                     </tr>
                   ))}
                 </tbody>

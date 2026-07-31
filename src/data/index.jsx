@@ -100,7 +100,7 @@ export const FUNCIONALIDADES = [
   },
   {
     id: 'collab',
-    title: 'Colaboração Síncrona',
-    desc: 'Compartilhe suas ideias com outros usuários para edição colaborativa em tempo real.',
+    title: 'Colaboração',
+    desc: 'Compartilhe suas ideias com outros usuários.',
   },
 ]

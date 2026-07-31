@@ -369,6 +369,10 @@
   padding: 0 0.5rem 0.6rem;
   border-bottom: 1px solid var(--border-dark);
 }
+.dash-table th:nth-child(3),
+.dash-table td:nth-child(3) {
+  min-width: 8rem;
+}
 .dash-table td {
   padding: 0.85rem 0.5rem;
   border-bottom: 1px solid var(--border-dark);
