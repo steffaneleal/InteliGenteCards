@@ -369,10 +369,6 @@
   padding: 0 0.5rem 0.6rem;
   border-bottom: 1px solid var(--border-dark);
 }
-.dash-table th:nth-child(3),
-.dash-table td:nth-child(3) {
-  min-width: 8rem;
-}
 .dash-table td {
   padding: 0.85rem 0.5rem;
   border-bottom: 1px solid var(--border-dark);
@@ -412,6 +408,7 @@
   font-weight: 700;
 }
 .dash-badge-progress { background: #fff2e8; color: #c05e1c; }
+.dash-badge-progress { font-size: 0.68rem; }
 .dash-badge-done { background: #e8f7ee; color: #1e8e3e; }
 .dash-badge-muted { background: var(--bg-card-light); color: #777; }
 .dash-badge-pin { background: #eef1fb; color: #4a5cc7; }
@@ -496,14 +493,14 @@
 
 .dash-hero-card-link {
   width: 100%;
-  cursor: pointer;
+  cursor: default;
   text-align: left;
   font-family: inherit;
   transition: box-shadow 0.15s, border-color 0.15s, transform 0.1s;
 }
 .dash-hero-card-link:hover { border-color: var(--primary-orange); box-shadow: 0 6px 18px rgba(0,0,0,0.07); }
 .dash-hero-card-link:active { transform: scale(0.99); }
-.dash-hero-card-link .dash-hero-btn { pointer-events: none; }
+.dash-hero-card-link .dash-hero-btn { pointer-events: auto; cursor: pointer; }
 
 .dash-hero-card-primary {
   background: linear-gradient(160deg, var(--primary-dark), var(--secondary-dark));

@@ -159,33 +159,49 @@ export default function DashboardSuperAdminPage({ setPage, onSwitchRole }) {
             </div>
           </div>
 
-          {/* Gestão de conteúdo — acesso às views de Cartas e Trilhas (RF08) */}
+          {/* Gestão de conteúdo — acesso às views de Cartas e Trilhas */}
           <section className="dash-section">
             <div className="dash-section-head">
               <h2 style={{ fontSize: '1.05rem', fontWeight: 700, color: 'var(--accent-dark)' }}>Gestão de conteúdo</h2>
             </div>
             <div className="dash-hero-actions">
-              <button type="button" className="dash-hero-card dash-hero-card-link" onClick={() => setActive('cartas')}>
+              <div className="dash-hero-card dash-hero-card-link">
                 <span className="dash-hero-icon dash-hero-icon-orange"><CardStackIcon /></span>
                 <span className="dash-hero-title">Cartas</span>
                 <span className="dash-hero-desc">
                   {perguntas.length} carta(s) cadastrada(s). Veja, crie, edite e exclua as perguntas do guia.
                 </span>
-                <span className="dash-btn dash-btn-orange dash-hero-btn">Gerenciar cartas <ChevronRightIcon /></span>
-              </button>
+                <span
+                  role="button"
+                  tabIndex={0}
+                  className="dash-btn dash-btn-orange dash-hero-btn"
+                  onClick={() => setActive('cartas')}
+                  onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ' || e.key === 'Spacebar') { e.preventDefault(); setActive('cartas') } }}
+                >
+                  Gerenciar cartas <ChevronRightIcon />
+                </span>
+              </div>
 
-              <button type="button" className="dash-hero-card dash-hero-card-link" onClick={() => setActive('trilhas')}>
+              <div className="dash-hero-card dash-hero-card-link">
                 <span className="dash-hero-icon dash-hero-icon-orange"><TrackMiniIcon /></span>
                 <span className="dash-hero-title">Trilhas</span>
                 <span className="dash-hero-desc">
                   {trilhas.length} trilha(s) cadastrada(s). Veja, crie, edite e exclua as trilhas do guia.
                 </span>
-                <span className="dash-btn dash-btn-orange dash-hero-btn">Gerenciar trilhas <ChevronRightIcon /></span>
-              </button>
+                <span
+                  role="button"
+                  tabIndex={0}
+                  className="dash-btn dash-btn-orange dash-hero-btn"
+                  onClick={() => setActive('trilhas')}
+                  onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ' || e.key === 'Spacebar') { e.preventDefault(); setActive('trilhas') } }}
+                >
+                  Gerenciar trilhas <ChevronRightIcon />
+                </span>
+              </div>
             </div>
           </section>
 
-          {/* Facilitadores pendentes (RN03) */}
+          {/* Facilitadores pendentes */}
           <section className="dash-card">
             <div className="dash-section-head">
               <h2>Facilitadores pendentes de aprovação</h2>
