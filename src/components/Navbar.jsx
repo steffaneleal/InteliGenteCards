@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import { MenuIcon, CloseIcon } from '../icons'
 
-const NAV_LINKS = ['Início', 'Sobre', 'Funcionalidades', 'Dúvidas', 'Login', 'Cadastro', 'Parceiros']
+const NAV_LINKS = ['Início', 'Sobre', 'Funcionalidades', 'Dúvidas', 'Parceiros', 'Cadastro', 'Login']
 
 const SECTION_MAP = {
   Sobre: 'sobre',
@@ -79,7 +79,7 @@ export default function Navbar({ page, setPage, mobileOpen, setMobileOpen }) {
               <li key={link} className="nav-item has-dropdown">
                 <button className="nav-button" type="button">Parceiros</button>
                 <div className="nav-dropdown" role="menu">
-                  <a href="https://inteligentehub.com.br" target="_blank" rel="noreferrer" role="menuitem">InteliGente</a>
+                  <a href="https://inteligentehub.com.br" target="_blank" rel="noreferrer" role="menuitem">Hub InteliGente</a>
                   <a href="https://inteligentehub.com.br/InteliGenteCards.html" target="_blank" rel="noreferrer" role="menuitem">InteliGenteCards</a>
                 </div>
               </li>
