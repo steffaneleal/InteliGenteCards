@@ -522,8 +522,9 @@
   margin-bottom: 0.5rem;
 }
 
-.dash-hero-card-primary .dash-btn {
-  align-self: flex-start;
+.dash-hero-card-primary .dash-hero-btn {
+  width: 90%;
+  align-self: center;
 }
 
 .dash-hero-icon {
