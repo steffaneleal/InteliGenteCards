@@ -28,14 +28,28 @@ export default function DashboardShell({
   breadcrumb,
   onLogout,
   onSwitchRole,
+  notifications = [],
+  onNotificationRead,
   children,
 }) {
   const [drawerOpen, setDrawerOpen] = useState(false)
+  const [bellOpen, setBellOpen] = useState(false)
   const accent = ROLE_ACCENT[role]
+  const unreadCount = notifications.filter((item) => !item.read).length
 
   const handleNav = (id) => {
     setDrawerOpen(false)
     onNavigate(id)
+  }
+
+  const handleNotificationSelect = (notification) => {
+    setBellOpen(false)
+    if (notification.targetTab) {
+      handleNav(notification.targetTab)
+    }
+    if (!notification.read) {
+      onNotificationRead?.(notification.id)
+    }
   }
 
   return (
@@ -95,10 +109,28 @@ export default function DashboardShell({
           </div>
 
           <div className="dash-topbar-actions">
-            <button className="dash-bell" aria-label="Notificações">
-              <BellIcon />
-              <span className="dash-bell-dot" />
-            </button>
+            <div className="dash-bell-wrap">
+              <button className="dash-bell" aria-label="Notificações" aria-expanded={bellOpen} onClick={() => setBellOpen((v) => !v)}>
+                <BellIcon />
+                {unreadCount > 0 && <span className="dash-bell-dot" />}
+              </button>
+
+              {bellOpen && notifications.length > 0 && (
+                <div className="dash-notify-panel" role="menu" aria-label="Notificações">
+                  {notifications.map((notification) => (
+                    <button
+                      key={notification.id}
+                      type="button"
+                      className={`dash-notify-item${notification.read ? ' read' : ''}`}
+                      onClick={() => handleNotificationSelect(notification)}
+                    >
+                      <span className="dash-notify-title">{notification.title}</span>
+                      <span className="dash-notify-detail">{notification.detail}</span>
+                    </button>
+                  ))}
+                </div>
+              )}
+            </div>
             <div className="dash-user">
               <div className="dash-avatar">{user.initials}</div>
               <div className="dash-user-text">

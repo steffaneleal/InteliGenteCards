@@ -24,6 +24,10 @@ export default function DashboardestudantePage({ setPage, onSwitchRole }) {
   const [searchEvento, setSearchEvento] = useState('')
   const [selectedEvento, setSelectedEvento] = useState('')
   const [rankingModalOpen, setRankingModalOpen] = useState(false)
+  const [notifications, setNotifications] = useState([
+    { id: 'student-1', title: 'Lembrete de evento', detail: 'Workshop IA na Escola começa hoje às 18h.', targetTab: 'eventos', read: false },
+    { id: 'student-2', title: 'Novo retorno', detail: 'Seu projeto foi revisado pelo facilitador.', targetTab: 'projetos', read: false },
+  ])
   const { user, progresso, emAndamento, projetos, eventos, ranking } = estudante_MOCK
 
   const isPerfil = active === 'perfil'
@@ -44,6 +48,12 @@ export default function DashboardestudantePage({ setPage, onSwitchRole }) {
     setRankingModalOpen(true)
   }
 
+  const handleNotificationRead = (id) => {
+    setNotifications((prev) => prev.map((notification) =>
+      notification.id === id ? { ...notification, read: true } : notification
+    ))
+  }
+
   return (
     <DashboardShell
       role="estudante"
@@ -55,6 +65,8 @@ export default function DashboardestudantePage({ setPage, onSwitchRole }) {
       pageSubtitle={isPerfil ? 'Atualize seus dados e sua senha de acesso.' : 'Pronta para continuar sua jornada em IA ética?'}
       onLogout={() => setPage('home')}
       onSwitchRole={onSwitchRole}
+      notifications={notifications}
+      onNotificationRead={handleNotificationRead}
     >
       {isPerfil ? (
         <PerfilForm user={user} escolaLabel="Escola" />

@@ -53,6 +53,10 @@ function nextId(prefix, list) {
 
 export default function DashboardSuperAdminPage({ setPage, onSwitchRole }) {
   const [active, setActive] = useState('inicio')
+  const [notifications, setNotifications] = useState([
+    { id: 'admin-1', title: 'Solicitação de facilitador', detail: 'Rodrigo Palácios está aguardando aprovação.', targetTab: 'facilitadores', read: false },
+    { id: 'admin-2', title: 'Atualização de usuário', detail: '3 perfis foram alterados recentemente.', targetTab: 'usuarios', read: false },
+  ])
   const { user, metrics } = ADMIN_MOCK
 
   // ---------- Estado de conteúdo (cartas / trilhas) ----------
@@ -132,6 +136,12 @@ export default function DashboardSuperAdminPage({ setPage, onSwitchRole }) {
   )
   const meta = PAGE_META[active] || PAGE_META.inicio
 
+  const handleNotificationRead = (id) => {
+    setNotifications((prev) => prev.map((notification) =>
+      notification.id === id ? { ...notification, read: true } : notification
+    ))
+  }
+
   return (
     <DashboardShell
       role="admin"
@@ -144,6 +154,8 @@ export default function DashboardSuperAdminPage({ setPage, onSwitchRole }) {
       breadcrumb={meta.breadcrumb}
       onLogout={() => setPage('home')}
       onSwitchRole={onSwitchRole}
+      notifications={notifications}
+      onNotificationRead={handleNotificationRead}
     >
       {active === 'perfil' && <PerfilForm user={user} escolaLabel="Organização" />}
 

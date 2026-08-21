@@ -18,8 +18,18 @@ const NAV = [
 export default function DashboardFacilitadorPage({ setPage, onSwitchRole }) {
   const [active, setActive] = useState('inicio')
   const [showNovoEvento, setShowNovoEvento] = useState(false)
+  const [notifications, setNotifications] = useState([
+    { id: 'fac-1', title: 'Participantes confirmados', detail: '12 estudantes se inscreveram no Workshop IA na Escola.', targetTab: 'eventos', read: false },
+    { id: 'fac-2', title: 'Feedback pendente', detail: 'Há 3 projetos aguardando revisão de sua turma.', targetTab: 'ranking', read: false },
+  ])
   const { user, stats, eventos, ranking, forum } = FACILITADOR_MOCK
   const isPerfil = active === 'perfil'
+
+  const handleNotificationRead = (id) => {
+    setNotifications((prev) => prev.map((notification) =>
+      notification.id === id ? { ...notification, read: true } : notification
+    ))
+  }
 
   return (
     <DashboardShell
@@ -32,6 +42,8 @@ export default function DashboardFacilitadorPage({ setPage, onSwitchRole }) {
       pageSubtitle={isPerfil ? 'Atualize seus dados e sua senha de acesso.' : 'Acompanhe seus eventos e a evolução das turmas.'}
       onLogout={() => setPage('home')}
       onSwitchRole={onSwitchRole}
+      notifications={notifications}
+      onNotificationRead={handleNotificationRead}
     >
       {isPerfil ? (
         <PerfilForm user={user} escolaLabel="Escola" showEstadoCargo />
