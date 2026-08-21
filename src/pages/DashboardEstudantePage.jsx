@@ -72,40 +72,6 @@ export default function DashboardestudantePage({ setPage, onSwitchRole }) {
             </section>
           </div>
 
-          <div className="dash-grid-2">
-            {/* Continue de onde parou */}
-            <section className="dash-card dash-continue">
-              <p className="dash-card-eyebrow">Continue de onde parou</p>
-              <h3 className="dash-continue-title">{emAndamento.titulo}</h3>
-              <p className="dash-continue-trilha" style={{ color: TRILHA_META[emAndamento.trilha].color }}>
-                Trilha de {TRILHA_META[emAndamento.trilha].label}
-              </p>
-              <div className="dash-progress">
-                <div className="dash-progress-bar">
-                  <div className="dash-progress-fill" style={{ width: `${emAndamento.percent}%`, background: TRILHA_META[emAndamento.trilha].color }} />
-                </div>
-                <span>{emAndamento.percent}%</span>
-              </div>
-              <button className="dash-btn dash-btn-primary dash-continue-btn">
-                Continuar <ChevronRightIcon />
-              </button>
-            </section>
-
-            {/* Assistente Sabiá */}
-            {/* <section className="dash-card dash-ai-card">
-              <span className="dash-ai-icon"><SparkleIcon /></span>
-              <div>
-                <p className="dash-card-eyebrow">Assistente de IA</p>
-                <h3>Precisa de uma direção?</h3>
-                <p className="dash-ai-desc">
-                  O Sabiá pode ajudar a destravar sua ideia, sugerir perguntas e apontar
-                  riscos éticos que você ainda não considerou.
-                </p>
-              </div>
-              <button className="dash-btn dash-btn-orange">Conversar com o Sabiá</button>
-            </section> */}
-          </div>
-
           {/*
             "Suas trilhas" — mantido no código para reaproveitar depois,
             porém faz mais sentido exibir o progresso das trilhas DENTRO
