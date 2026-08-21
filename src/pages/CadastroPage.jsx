@@ -1,6 +1,5 @@
-import { useState, useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import Footer from '../components/Footer'
-import bgGif from '../assets/images/bg.gif'
 import estudanteImg from '../assets/Estudante.png'
 import facilitadorImg from '../assets/Facilitador.png'
 
@@ -54,7 +53,7 @@ export default function CadastroPage({ setPage }) {
           count: 10,
           size: { min: 2, max: 45, pulse: 0.4 },
           speed: { x: { min: 0, max: 0.8 }, y: { min: 0, max: 0.2 } },
-          colors: { background: '#253046', particles: ['#293d65'] },
+          colors: { background: '#243046', particles: ['#293d65'] },
           blending: 'screen',
           opacity: { center: 1, edge: 1 },
           skew: -1,
@@ -80,7 +79,7 @@ export default function CadastroPage({ setPage }) {
 
   return (
     <div className="page-auth">
-      <div className="auth-bg finisher-header"/>
+      <div className="auth-bg finisher-header" />
       <div className="auth-center">
         <div className={`cadastro-wrapper${isFacilitador ? ' flipped' : ''}`}>
           {/* Panel esquerdo — formulário */}

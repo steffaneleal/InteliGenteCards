@@ -1,10 +1,10 @@
-import { useState, useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import Footer from '../components/Footer'
-import bgGif from '../assets/images/bg.gif'
 
 export default function LoginPage({ setPage, onLoginSuccess }) {
   const [email, setEmail] = useState('')
   const [senha, setSenha] = useState('')
+  const [showSenha, setShowSenha] = useState(false)
 
   useEffect(() => {
     const target = document.querySelector('.auth-bg.finisher-header')
@@ -16,7 +16,7 @@ export default function LoginPage({ setPage, onLoginSuccess }) {
           count: 10,
           size: { min: 2, max: 45, pulse: 0.4 },
           speed: { x: { min: 0, max: 0.8 }, y: { min: 0, max: 0.2 } },
-          colors: { background: '#253046', particles: ['#293d65'] },
+          colors: { background: '#243046', particles: ['#293d65'] },
           blending: 'screen',
           opacity: { center: 1, edge: 1 },
           skew: -1,
@@ -39,11 +39,10 @@ export default function LoginPage({ setPage, onLoginSuccess }) {
 
     return () => window.clearInterval(checkTimer)
   }, [])
-  const [showSenha, setShowSenha] = useState(false)
 
   return (
     <div className="page-auth">
-      <div className="auth-bg finisher-header"/>
+      <div className="auth-bg finisher-header" />
       <div className="auth-center">
         <div className="auth-card">
           <h1 className="auth-title">Login</h1>
