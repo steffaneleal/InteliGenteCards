@@ -51,9 +51,11 @@ export const FACILITADOR_MOCK = {
     { id: 4, nome: 'Hackathon InteliGente 2026', visibilidade: 'Público', pin: null, participantes: 0, status: 'Encerrado' },
   ],
   ranking: [
-    { pos: 1, equipe: 'InteliGente', nota: 9.6 },
-    { pos: 2, equipe: 'Furiosa', nota: 9.1 },
-    { pos: 3, equipe: 'Lúdico', nota: 8.8 },
+    { pos: 1, evento: 'Workshop IA na Escola', projeto: 'App de apoio a agricultores familiares', equipe: 'InteliGente', nota: 9.6 },
+    { pos: 2, evento: 'Workshop IA na Escola', projeto: 'Assistente de triagem em UBS', equipe: 'Furiosa', nota: 9.1 },
+    { pos: 3, evento: 'Workshop IA na Escola', projeto: 'Detector de fake news local', equipe: 'Lúdico', nota: 8.8 },
+    { pos: 1, evento: 'Semana de Tecnologia — 2º ano', projeto: 'Sistema de monitoramento de calor', equipe: 'Mente Aberta', nota: 9.4 },
+    { pos: 2, evento: 'Semana de Tecnologia — 2º ano', projeto: 'Plataforma de apoio à leitura', equipe: 'CodeMakers', nota: 9.0 },
   ],
   forum: [
     { autor: 'Nestor Júnior', mensagem: 'Podemos usar dados fictícios para treinar o exemplo de IA?', tempo: 'há 12 min' },
