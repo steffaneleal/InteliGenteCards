@@ -57,6 +57,14 @@ export const TRILHAS = [
 
 export const FAQS = [
   {
+    q: 'O que é o RefletIA?',
+    a: 'O RefletIA é uma plataforma educacional que utiliza o jogo de cartas InteliGenteCards para ensinar conceitos de Inteligência Artificial de forma ética, responsável e colaborativa.',
+  },
+  {
+    q: 'Por que o RefletIA não se chama mais InteliGenteCards?',
+    a: 'O nome RefletIA foi escolhido para refletir o propósito da plataforma: promover reflexão sobre Inteligência Artificial. O InteliGenteCards continua sendo o nome do jogo de cartas utilizado na plataforma.',
+  },
+  {
     q: 'O que é o InteliGenteCards?',
     a: 'O InteliGenteCards é um jogo de cartas e baralho educacional desenvolvido para orientar estudantes, professores e profissionais a pensarem em soluções de Inteligência Artificial que sejam éticas, justas, responsáveis e integradas ao impacto social.',
   },
@@ -65,21 +73,25 @@ export const FAQS = [
     a: 'O InteliGenteCards foi criado para facilitar o aprendizado sobre IA de forma colaborativa, estimulando o pensamento crítico e o debate entre participantes de diferentes contextos.',
   },
   {
-    q: 'Quem pode usar o InteliGenteCards?',
+    q: 'Quem pode usar o RefletIA?',
     a: 'Qualquer pessoa interessada em aprender sobre IA de forma responsável: estudantes, educadores, profissionais de tecnologia e facilitadores de workshops.',
   },
   {
-    q: 'Qual é a diferença entre o perfil de Estudante e o de Facilitador?',
-    a: 'O Estudante participa das dinâmicas com as cartas. O Facilitador conduz as sessões, tem acesso a recursos adicionais e pode criar e compartilhar baralhos personalizados.',
+    q: 'Preciso pagar para utilizar o RefletIA?',
+    a: 'A plataforma é 100% gratuita, com o objetivo de democratizar o acesso ao conhecimento sobre IA ética e responsável.',
   },
   {
-    q: 'Preciso pagar para utilizar o InteliGenteCards?',
-    a: 'A plataforma é 100% gratuita, com o objetivo de democratizar o acesso ao conhecimento sobre IA ética e responsável.',
+    q: 'Qual é a diferença entre os perfis de Estudante e de Facilitador?',
+    a: 'O Estudante participa das dinâmicas com as cartas. O Facilitador conduz as sessões, tem acesso a recursos adicionais e pode criar e compartilhar baralhos personalizados.',
   },
   {
     q: 'Sobre o Autor do Baralho',
     a: 'Robson Bonidia possui Doutorado em Ciência da Computação e Matemática Computacional pela Universidade de São Paulo (USP). Atualmente, é membro dos comitês de coordenação da rede global AI4PEP. Sua experiência abrange IA, reconhecimento de padrões, aprendizado de máquina e biologia computacional, com foco na democratização do uso de IA para o bem social.',
   },
+  {
+    q: 'Sobre os responsáveis pelo desenvolvimento da Plataforma',
+    a: 'A plataforma foi desenvolvida por Stéffane Leal Silva Santos como seu Trabalho de Conclusão de Curso (TCC) em Engenharia de Computação na Universidade Tecnológica Federal do Paraná (UTFPR). O projeto contou com a colaboração de Josiane Mariane Batista, que auxiliou em todo o processo de levantamento de requisitos e organização das ideias, sendo orientado pelo Prof. Dr. Robson Parmezan Bonídia (coordenador do Projeto de Extensão InteliGente e autor do Baralho InteliGenteCards) e pelo Prof. Dr. Rodrigo Henrique Cunha Palácios.',
+  }
 ]
 
 export const FUNCIONALIDADES = [
