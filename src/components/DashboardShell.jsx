@@ -43,7 +43,7 @@ export default function DashboardShell({
       <aside className={`dash-sidebar${drawerOpen ? ' open' : ''}`}>
         <div className="dash-sidebar-top">
           <button className="dash-logo" onClick={() => handleNav(nav[0].id)}>
-            Inteli<span className="dash-logo-gente">Gente</span>Cards
+            Reflet<span className="dash-logo-gente">IA</span>
           </button>
           <button className="dash-drawer-close" onClick={() => setDrawerOpen(false)} aria-label="Fechar menu">
             <CloseIcon />

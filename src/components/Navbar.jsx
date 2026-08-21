@@ -70,7 +70,7 @@ export default function Navbar({ page, setPage, mobileOpen, setMobileOpen }) {
     <>
       <nav className="nav" role="navigation" aria-label="Menu principal">
         <button className="nav-logo" onClick={() => setPage('home')} aria-label="Ir para página inicial">
-          InteliGenteCards
+          RefletIA
         </button>
 
         <ul className="nav-links">

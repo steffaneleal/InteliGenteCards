@@ -52,8 +52,7 @@ export default function DashboardSuperAdminPage({ setPage, onSwitchRole }) {
   const { user, metrics, facilitadoresPendentes } = ADMIN_MOCK
 
   // ---------- Estado de conteúdo (cartas / trilhas) ----------
-  // TODO: substituir por chamadas à API (GET/POST/PATCH/DELETE) quando o
-  // backend estiver disponível. Por ora os dados vivem em memória.
+  // TODO: substituir por chamadas à API (GET/POST/PATCH/DELETE) quando terminar o back 
   const [trilhas, setTrilhas] = useState(() =>
     ADMIN_MOCK.conteudo.trilhas.map((t, i) => ({
       ...t,

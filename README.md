@@ -1,4 +1,4 @@
-# InteliGenteCards
+# RefletIA
 
 ## 🚀 Como Rodar o Projeto
 

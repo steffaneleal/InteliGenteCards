@@ -59,12 +59,11 @@ export default function HomePage({ setPage }) {
         <div className="hero-content">
           <div className="hero-text">
             <h1 className="hero-title">
-              <span className="hero-title-inteli">Inteli<span className="hero-title-gente">Gente</span></span>
-              <br />Cards
+              <span className="hero-title-inteli">Reflet<span className="hero-title-gente">IA</span></span>
             </h1>
             <p className="hero-subtitle">
               Explore a inteligência artificial de forma prática, colaborativa e responsável através
-              de dinâmicas interativas com cartas digitais
+              de dinâmicas interativas com cartas digitais.
             </p>
             <button className="btn-primary-hero hero-cta" onClick={() => setPage('cadastro')}>
               Começar Agora
