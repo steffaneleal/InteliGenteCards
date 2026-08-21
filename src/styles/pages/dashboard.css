@@ -675,6 +675,50 @@
 }
 .dash-approval-actions { display: flex; gap: 0.4rem; flex-shrink: 0; }
 
+/* View completa (dash-facilitadores-view): botões de ação no canto esquerdo da linha */
+.dash-approval-item-full { align-items: center; flex-wrap: wrap; }
+.dash-approval-actions-left { order: -1; }
+.dash-approval-date {
+  flex-shrink: 0;
+  font-size: 0.76rem;
+  color: #999;
+  white-space: nowrap;
+  align-self: center;
+}
+
+.dash-link-btn {
+  display: inline-flex; align-items: center; gap: 0.25rem;
+  background: none; border: none; cursor: pointer;
+  font-size: 0.82rem; font-weight: 600; font-family: inherit;
+  color: var(--primary-orange);
+}
+.dash-link-btn:hover { text-decoration: underline; }
+.dash-link-btn svg { width: 14px; height: 14px; }
+
+.dash-count-pill {
+  background: var(--bg-light-secondary);
+  color: var(--text-muted-secondary);
+  font-size: 0.78rem;
+  font-weight: 600;
+  padding: 0.3rem 0.75rem;
+  border-radius: 999px;
+}
+
+/* Modal de "ver dados do cadastro" */
+.dash-detail-list { display: flex; flex-direction: column; gap: 0.85rem; margin-bottom: 1rem; }
+.dash-detail-list dt { font-size: 0.74rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.03em; color: #9aa1ad; }
+.dash-detail-list dd { font-size: 0.9rem; color: var(--text-dark); margin: 0.15rem 0 0; line-height: 1.5; }
+
+/* Badges de papel de usuário */
+.dash-badge-role-facilitador { background: #eef1fb; color: #4a5cc7; }
+.dash-badge-role-estudante { background: #fff2e8; color: #c05e1c; }
+.dash-badge-pending { background: #fff8e6; color: #a9791a; }
+
+.dash-table-footnote {
+  margin-top: 1.1rem;
+  font-size: 0.78rem;
+}
+
 /* ---------- Banner de privacidade (admin) ---------- */
 
 .dash-privacy-banner {

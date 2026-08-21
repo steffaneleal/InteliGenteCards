@@ -3,6 +3,8 @@ import DashboardShell from '../components/DashboardShell'
 import PerfilForm from '../components/PerfilForm'
 import CartasView from '../components/CartasView'
 import TrilhasView from '../components/TrilhasView'
+import FacilitadoresView from '../components/FacilitadoresView'
+import UsuariosView from '../components/UsuariosView'
 import { TRILHA_COLOR_PALETTE } from '../components/TrilhaForm'
 import { ADMIN_MOCK, TRILHA_META } from '../data/dashboardData'
 import {
@@ -26,6 +28,8 @@ const PAGE_META = {
   inicio: { title: 'Painel do Super Admin', subtitle: 'Gestão de conteúdo, facilitadores e métricas da plataforma.' },
   cartas: { title: 'Cartas', subtitle: 'Todas as perguntas cadastradas nas trilhas do guia.', breadcrumb: 'Conteúdo' },
   trilhas: { title: 'Trilhas', subtitle: 'Todas as trilhas de aprendizagem do guia.', breadcrumb: 'Conteúdo' },
+  facilitadores: { title: 'Facilitadores', subtitle: 'Aprove, recuse ou revise os cadastros de facilitador pendentes.' },
+  usuarios: { title: 'Usuários', subtitle: 'Todos os usuários cadastrados na plataforma, por papel.' },
   perfil: { title: 'Meu Perfil', subtitle: 'Atualize seus dados e sua senha de acesso.' },
 }
 
@@ -49,7 +53,7 @@ function nextId(prefix, list) {
 
 export default function DashboardSuperAdminPage({ setPage, onSwitchRole }) {
   const [active, setActive] = useState('inicio')
-  const { user, metrics, facilitadoresPendentes } = ADMIN_MOCK
+  const { user, metrics } = ADMIN_MOCK
 
   // ---------- Estado de conteúdo (cartas / trilhas) ----------
   // TODO: substituir por chamadas à API (GET/POST/PATCH/DELETE) quando terminar o back 
@@ -61,6 +65,10 @@ export default function DashboardSuperAdminPage({ setPage, onSwitchRole }) {
     }))
   )
   const [perguntas, setPerguntas] = useState(() => [...ADMIN_MOCK.conteudo.perguntas])
+
+  // ---------- Estado de facilitadores / usuários ----------
+  const [facilitadoresPendentes, setFacilitadoresPendentes] = useState(() => [...ADMIN_MOCK.facilitadoresPendentes])
+  const [usuarios, setUsuarios] = useState(() => [...ADMIN_MOCK.usuarios])
 
   const trilhaByKey = useMemo(
     () => Object.fromEntries(trilhas.map((t) => [t.key, t])),
@@ -96,8 +104,31 @@ export default function DashboardSuperAdminPage({ setPage, onSwitchRole }) {
     setTrilhas((list) => list.filter((t) => t.id !== id))
   }
 
+  // ---------- Facilitadores pendentes ----------
+  const handleApproveFacilitador = (id) => {
+    const item = facilitadoresPendentes.find((f) => f.id === id)
+    if (!item) return
+    setFacilitadoresPendentes((list) => list.filter((f) => f.id !== id))
+    setUsuarios((list) => [
+      {
+        id: `U-${String(list.length + 1).padStart(3, '0')}`,
+        nome: item.nome,
+        email: item.email,
+        role: 'Facilitador',
+        instituicao: item.instituicao,
+        estado: item.estado,
+        status: 'Ativo',
+        cadastro: item.dataSolicitacao,
+      },
+      ...list,
+    ])
+  }
+  const handleRejectFacilitador = (id) => {
+    setFacilitadoresPendentes((list) => list.filter((f) => f.id !== id))
+  }
+
   const navWithBadge = NAV.map((n) =>
-    n.badgeKey ? { ...n, badge: metrics[n.badgeKey] || undefined } : n
+    n.id === 'facilitadores' ? { ...n, badge: facilitadoresPendentes.length || undefined } : n
   )
   const meta = PAGE_META[active] || PAGE_META.inicio
 
@@ -136,6 +167,16 @@ export default function DashboardSuperAdminPage({ setPage, onSwitchRole }) {
         />
       )}
 
+      {active === 'facilitadores' && (
+        <FacilitadoresView
+          pendentes={facilitadoresPendentes}
+          onApprove={handleApproveFacilitador}
+          onReject={handleRejectFacilitador}
+        />
+      )}
+
+      {active === 'usuarios' && <UsuariosView usuarios={usuarios} />}
+
       {active === 'inicio' && (
         <>
           {/* Métricas globais */}
@@ -154,7 +195,7 @@ export default function DashboardSuperAdminPage({ setPage, onSwitchRole }) {
             </div>
             <div className="dash-stat-card dash-stat-alert">
               <span className="dash-stat-icon"><UserGearIcon /></span>
-              <div><p className="dash-stat-value">{metrics.facilitadoresPendentes}</p><p className="dash-stat-label">Facilitadores pendentes</p></div>
+              <div><p className="dash-stat-value">{facilitadoresPendentes.length}</p><p className="dash-stat-label">Facilitadores pendentes</p></div>
             </div>
           </div>
 
@@ -200,27 +241,40 @@ export default function DashboardSuperAdminPage({ setPage, onSwitchRole }) {
             </div>
           </section>
 
-          {/* Facilitadores pendentes */}
+          {/* Facilitadores pendentes — prévia, com acesso à view completa */}
           <section className="dash-card">
             <div className="dash-section-head">
               <h2>Facilitadores pendentes de aprovação</h2>
+              {facilitadoresPendentes.length > 0 && (
+                <button className="dash-link-btn" onClick={() => setActive('facilitadores')}>
+                  Ver todos <ChevronRightIcon />
+                </button>
+              )}
             </div>
-            <ul className="dash-approval-list">
-              {facilitadoresPendentes.map((f) => (
-                <li key={f.id} className="dash-approval-item">
-                  <div className="dash-avatar dash-avatar-sm">{f.nome.split(' ').map(w => w[0]).join('').slice(0, 2)}</div>
-                  <div className="dash-approval-text">
-                    <p className="dash-table-title">{f.nome}</p>
-                    <p className="dash-table-sub">{f.instituicao}</p>
-                    <p className="dash-approval-justificativa">&ldquo;{f.justificativa}&rdquo;</p>
-                  </div>
-                  <div className="dash-approval-actions">
-                    <button className="dash-icon-btn dash-icon-btn-approve" aria-label="Aprovar"><CheckIcon /></button>
-                    <button className="dash-icon-btn dash-icon-btn-danger" aria-label="Rejeitar"><XIcon /></button>
-                  </div>
-                </li>
-              ))}
-            </ul>
+            {facilitadoresPendentes.length === 0 ? (
+              <p className="dash-empty-state">Nenhuma solicitação pendente no momento.</p>
+            ) : (
+              <ul className="dash-approval-list">
+                {facilitadoresPendentes.slice(0, 3).map((f) => (
+                  <li key={f.id} className="dash-approval-item">
+                    <div className="dash-avatar dash-avatar-sm">{f.nome.split(' ').map(w => w[0]).join('').slice(0, 2)}</div>
+                    <div className="dash-approval-text">
+                      <p className="dash-table-title">{f.nome}</p>
+                      <p className="dash-table-sub">{f.instituicao}</p>
+                      <p className="dash-approval-justificativa">&ldquo;{f.justificativa}&rdquo;</p>
+                    </div>
+                    <div className="dash-approval-actions">
+                      <button className="dash-icon-btn dash-icon-btn-approve" aria-label={`Aprovar ${f.nome}`} onClick={() => handleApproveFacilitador(f.id)}>
+                        <CheckIcon />
+                      </button>
+                      <button className="dash-icon-btn dash-icon-btn-danger" aria-label={`Recusar ${f.nome}`} onClick={() => handleRejectFacilitador(f.id)}>
+                        <XIcon />
+                      </button>
+                    </div>
+                  </li>
+                ))}
+              </ul>
+            )}
           </section>
         </>
       )}

@@ -352,6 +352,34 @@ export function AlertTriangleIcon() {
   )
 }
 
+export function EyeIcon() {
+  return (
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M1.5 12S5 5 12 5s10.5 7 10.5 7-3.5 7-10.5 7S1.5 12 1.5 12z"/>
+      <circle cx="12" cy="12" r="3.2"/>
+    </svg>
+  )
+}
+
+export function FacilitadorMiniIcon() {
+  return (
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M3 20c0-3.9 3.1-7 7-7s7 3.1 7 7"/>
+      <circle cx="10" cy="7" r="4"/>
+      <path d="M17 5.5c1.4.5 2.5 1.8 2.5 3.5S18.4 12 17 12.5"/>
+    </svg>
+  )
+}
+
+export function EstudanteMiniIcon() {
+  return (
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M12 4L22 9L12 14L2 9L12 4Z" strokeLinejoin="round"/>
+      <path d="M6 11v5c0 1.9 2.7 3.5 6 3.5s6-1.6 6-3.5v-5"/>
+    </svg>
+  )
+}
+
 export function ChevronLeftIcon() {
   return (
     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
