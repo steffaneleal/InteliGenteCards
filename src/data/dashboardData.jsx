@@ -32,6 +32,11 @@ export const estudante_MOCK = {
     { id: 1, nome: 'Workshop IA na Escola', facilitador: 'Prof. Rosangela', status: 'Em andamento' },
     { id: 2, nome: 'Hackathon InteliGente 2026', facilitador: 'Prof. Rodrigo Palácios', status: 'Encerrado' },
   ],
+  ranking: [
+    { pos: 1, evento: 'Workshop IA na Escola', projeto: 'App de apoio a agricultores familiares', equipe: 'Equipe RefletIA', nota: 9.6 },
+    { pos: 2, evento: 'Workshop IA na Escola', projeto: 'Assistente de triagem em UBS', equipe: 'Equipe EcoAlerta', nota: 9.1 },
+    { pos: 3, evento: 'Hackathon InteliGente 2026', projeto: 'Detector de fake news local', equipe: 'Equipe Lúdico', nota: 8.8 },
+  ],
 }
 
 // ---------- Facilitador ----------

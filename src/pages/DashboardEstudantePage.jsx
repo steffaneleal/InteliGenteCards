@@ -1,10 +1,11 @@
 import { useState } from 'react'
 import DashboardShell from '../components/DashboardShell'
 import PerfilForm from '../components/PerfilForm'
+import Modal from '../components/Modal'
 import { estudante_MOCK, TRILHA_META } from '../data/dashboardData'
 import {
   HomeIcon, FolderIcon, TrackMiniIcon, EventIcon, ForumIcon, UserGearIcon,
-  SparkleIcon, ChevronRightIcon, IdeaIcon, KeyPinIcon,
+  SparkleIcon, ChevronRightIcon, IdeaIcon, KeyPinIcon, TrophyIcon,
 } from '../icons'
 
 const NAV = [
@@ -12,6 +13,7 @@ const NAV = [
   { id: 'projetos', label: 'Meus Projetos', icon: <FolderIcon /> },
   { id: 'trilhas', label: 'Trilhas', icon: <TrackMiniIcon /> },
   { id: 'eventos', label: 'Eventos', icon: <EventIcon /> },
+  { id: 'ranking', label: 'Ranking', icon: <TrophyIcon /> },
   { id: 'forum', label: 'Fórum', icon: <ForumIcon /> },
   { id: 'perfil', label: 'Meu Perfil', icon: <UserGearIcon /> },
 ]
@@ -19,9 +21,28 @@ const NAV = [
 export default function DashboardestudantePage({ setPage, onSwitchRole }) {
   const [active, setActive] = useState('inicio')
   const [pin, setPin] = useState('')
-  const { user, progresso, emAndamento, projetos, eventos } = estudante_MOCK
+  const [searchEvento, setSearchEvento] = useState('')
+  const [selectedEvento, setSelectedEvento] = useState('')
+  const [rankingModalOpen, setRankingModalOpen] = useState(false)
+  const { user, progresso, emAndamento, projetos, eventos, ranking } = estudante_MOCK
 
   const isPerfil = active === 'perfil'
+  const isRanking = active === 'ranking'
+  const eventosFiltrados = eventos.filter((evento) =>
+    evento.nome.toLowerCase().includes(searchEvento.toLowerCase())
+  )
+  const eventosRanking = [...new Map(
+    ranking.map((item) => [item.evento, item.evento])
+  ).entries()].map(([, evento]) => evento)
+  const eventosRankingFiltrados = eventosRanking.filter((evento) =>
+    evento.toLowerCase().includes(searchEvento.toLowerCase())
+  )
+  const rankingSelecionado = ranking.filter((item) => item.evento === selectedEvento)
+
+  const openRankingModal = (evento) => {
+    setSelectedEvento(evento)
+    setRankingModalOpen(true)
+  }
 
   return (
     <DashboardShell
@@ -37,6 +58,64 @@ export default function DashboardestudantePage({ setPage, onSwitchRole }) {
     >
       {isPerfil ? (
         <PerfilForm user={user} escolaLabel="Escola" />
+      ) : isRanking ? (
+        <>
+          <section className="dash-card">
+            <div className="dash-section-head">
+              <h2>Ranking por evento</h2>
+            </div>
+
+            <div className="dash-search-box">
+              <input
+                type="search"
+                value={searchEvento}
+                onChange={(e) => setSearchEvento(e.target.value)}
+                placeholder="Buscar evento"
+                aria-label="Buscar evento"
+              />
+            </div>
+
+            <ul className="dash-event-list dash-ranking-list">
+              {eventosRankingFiltrados.map((evento) => (
+                <li
+                  key={evento}
+                  className="dash-event-item dash-ranking-event-item"
+                  onClick={() => openRankingModal(evento)}
+                  role="button"
+                  tabIndex={0}
+                  onKeyDown={(e) => {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                      e.preventDefault()
+                      openRankingModal(evento)
+                    }
+                  }}
+                >
+                  <div>
+                    <p className="dash-event-name">{evento}</p>
+                  </div>
+                  <span className="dash-ranking-arrow">›</span>
+                </li>
+              ))}
+            </ul>
+          </section>
+
+          {rankingModalOpen && (
+            <Modal title={selectedEvento} subtitle="Ranking do workshop/evento" onClose={() => setRankingModalOpen(false)} size="md">
+              <ol className="dash-podium">
+                {rankingSelecionado.map((r) => (
+                  <li key={`${r.evento}-${r.pos}`} className={`dash-podium-item pos-${r.pos}`}>
+                    <span className="dash-podium-pos">{r.pos}º</span>
+                    <div className="dash-podium-meta">
+                      <span className="dash-podium-team">{r.equipe}</span>
+                      <span className="dash-podium-project">{r.projeto}</span>
+                    </div>
+                    <span className="dash-podium-score">{r.nota}</span>
+                  </li>
+                ))}
+              </ol>
+            </Modal>
+          )}
+        </>
       ) : (
         <>
           {/* Destaques: criar solução + entrar em evento */}
@@ -135,8 +214,19 @@ export default function DashboardestudantePage({ setPage, onSwitchRole }) {
                 <h2>Meus eventos</h2>
                 <button className="dash-link" onClick={() => setActive('eventos')}>Ver todos <ChevronRightIcon /></button>
               </div>
+
+              <div className="dash-search-box">
+                <input
+                  type="search"
+                  value={searchEvento}
+                  onChange={(e) => setSearchEvento(e.target.value)}
+                  placeholder="Buscar evento"
+                  aria-label="Buscar evento"
+                />
+              </div>
+
               <ul className="dash-event-list">
-                {eventos.map((e) => (
+                {eventosFiltrados.map((e) => (
                   <li key={e.id} className="dash-event-item">
                     <div>
                       <p className="dash-event-name">{e.nome}</p>
