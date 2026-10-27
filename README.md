@@ -1,57 +1,37 @@
 # RefletIA
 
-## 🚀 Como Rodar o Projeto
+Plataforma web do InteliGenteCards Virtual (TCC - UTFPR Cornélio Procópio). Next.js (App Router) + React.
 
-### Pré-requisitos
+## Como rodar
 
-Antes de iniciar, certifique-se de ter instalado em sua máquina:
-
-1. **[Node.js](https://nodejs.org/)** (v18.x ou superior)
-2. **npm** (incluído com o Node.js)
-
----
-
-### ⚙️ Configuração do Ambiente
-
-#### 1. Clone o repositório
-
-```bash
-git clone https://github.com/steffaneleal/InteliGenteCards.git
-cd InteliGenteCards
-```
-
-#### 2. Instale as dependências
+Pré-requisito: Node.js 18.18 ou superior.
 
 ```bash
 npm install
+npm run dev      # http://localhost:3000
+npm run build    # build de produção
+npm run start    # serve o build
 ```
 
-### Execução
+Copie `.env.example` para `.env.local` quando o backend existir.
 
-Com as dependências instaladas, inicie:
-
-```bash
-npm run dev
-```
-
-O terminal exibirá as mensagens de confirmação:
+## Estrutura
 
 ```
-> inteligente-cards@0.0.1 dev
-> vite
-
-
-  VITE v5.4.21  ready in 302 ms
-
-  ➜  Local:   http://localhost:5173/
-  ➜  Network: use --host to expose
-  ➜  press h + enter to show help
+src/
+  app/              # ROTAS (o "AppRoutes" do Next.js): cada pasta com page.jsx vira uma URL
+    layout.jsx      #   layout raiz: CSS global, fonte, script do FinisherHeader
+    (public)/       #   páginas com navbar: /  /login  /cadastro
+    (dashboard)/    #   áreas logadas: /estudante  /facilitador  /admin
+  views/            # telas (antiga pasta "pages"; renomeada porque o Next trata "pages" como rota)
+  components/       # componentes reutilizáveis
+  data/             # dados fictícios (serão substituídos pela API)
+  lib/routes.js     # constantes de rotas
+  config/features.js# flags de funcionalidades fora do MVP (ranking = false)
+  styles/  icons/
+public/assets/      # imagens (servidas em /assets/...)
 ```
 
-O sistema estará disponível em **[http://localhost:5173](http://localhost:5173)**.
+## Funcionalidades fora do MVP
 
-
-
-
-
-
+O ranking está desativado em `src/config/features.js` (`ranking: false`). O código foi mantido; para reativar, troque para `true`.

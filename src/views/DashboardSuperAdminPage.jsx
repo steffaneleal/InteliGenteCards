@@ -1,3 +1,8 @@
+'use client'
+
+import { useRouter } from 'next/navigation'
+import { ROUTES, NEXT_ROLE_ROUTE } from '@/lib/routes'
+import { FEATURES } from '@/config/features'
 import { useMemo, useState } from 'react'
 import DashboardShell from '../components/DashboardShell'
 import PerfilForm from '../components/PerfilForm'
@@ -51,7 +56,8 @@ function nextId(prefix, list) {
   return `${prefix}-${String(max + 1).padStart(2, '0')}`
 }
 
-export default function DashboardSuperAdminPage({ setPage, onSwitchRole }) {
+export default function DashboardSuperAdminPage() {
+  const router = useRouter()
   const [active, setActive] = useState('inicio')
   const [notifications, setNotifications] = useState([
     { id: 'admin-1', title: 'Solicitação de facilitador', detail: 'Rodrigo Palácios está aguardando aprovação.', targetTab: 'facilitadores', read: false },
@@ -152,8 +158,8 @@ export default function DashboardSuperAdminPage({ setPage, onSwitchRole }) {
       pageTitle={meta.title}
       pageSubtitle={meta.subtitle}
       breadcrumb={meta.breadcrumb}
-      onLogout={() => setPage('home')}
-      onSwitchRole={onSwitchRole}
+      onLogout={() => router.push(ROUTES.home)}
+      onSwitchRole={() => router.push(NEXT_ROLE_ROUTE.admin)}
       notifications={notifications}
       onNotificationRead={handleNotificationRead}
     >

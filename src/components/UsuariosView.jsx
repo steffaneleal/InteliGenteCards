@@ -1,3 +1,5 @@
+'use client'
+
 import { useMemo, useState } from 'react'
 import { SearchIcon, UsersIcon, FacilitadorMiniIcon, EstudanteMiniIcon } from '../icons'
 

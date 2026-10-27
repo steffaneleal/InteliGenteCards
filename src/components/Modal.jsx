@@ -1,10 +1,9 @@
+'use client'
+
 import { useEffect } from 'react'
 import { CloseIcon } from '../icons'
 
-/**
- * Modal genérico usado pelas telas de CRUD (cartas / trilhas).
- * Fecha com ESC, clique no backdrop ou botão de fechar.
- */
+// Modal genérico usado pelas telas de CRUD (cartas / trilhas). Fecha com ESC, clique no backdrop ou botão de fechar.
 export default function Modal({ title, subtitle, onClose, children, size = 'md' }) {
   useEffect(() => {
     const onKeyDown = (e) => {

@@ -1,9 +1,13 @@
+'use client'
+
+import { useRouter } from 'next/navigation'
+import { ROUTES } from '@/lib/routes'
 import { useEffect, useState } from 'react'
 import Footer from '../components/Footer'
-import estudanteImg from '../assets/Estudante.png'
-import facilitadorImg from '../assets/Facilitador.png'
-
-function EstudanteForm({ setPage, onSwitch }) {
+const estudanteImg = '/assets/Estudante.png'
+const facilitadorImg = '/assets/Facilitador.png'
+function EstudanteForm() {
+  const router = useRouter()
   return (
     <>
       <h1 className="auth-title">Cadastro de Estudante</h1>
@@ -13,15 +17,16 @@ function EstudanteForm({ setPage, onSwitch }) {
       <div className="auth-field"><input type="password" placeholder="Verificação de Senha" className="auth-input" /></div>
       <div className="auth-field"><input type="text" placeholder="Estado" className="auth-input" /></div>
       <div className="auth-field"><input type="text" placeholder="Instituição de Ensino (opcional)" className="auth-input" /></div>
-      <button className="btn-primary auth-btn">Entrar</button>
+      <button className="btn-primary auth-btn">Cadastrar</button>
       <p className="auth-switch">
-        Ou, <button className="auth-link" onClick={() => setPage('login')}>faça login!</button>
+        Ou, <button className="auth-link" onClick={() => router.push(ROUTES.login)}>faça login!</button>
       </p>
     </>
   )
 }
 
-function FacilitadorForm({ setPage, onSwitch }) {
+function FacilitadorForm() {
+  const router = useRouter()
   return (
     <>
       <h1 className="auth-title">Cadastro de Facilitador</h1>
@@ -34,13 +39,13 @@ function FacilitadorForm({ setPage, onSwitch }) {
       <div className="auth-field"><input type="text" placeholder="Cargo / Função" className="auth-input" /></div>
       <button className="btn-primary auth-btn">Cadastrar</button>
       <p className="auth-switch">
-        Ou, <button className="auth-link" onClick={() => setPage('login')}>faça login!</button>
+        Ou, <button className="auth-link" onClick={() => router.push(ROUTES.login)}>faça login!</button>
       </p>
     </>
   )
 }
 
-export default function CadastroPage({ setPage }) {
+export default function CadastroPage() {
   const [isFacilitador, setIsFacilitador] = useState(false)
 
   useEffect(() => {
@@ -86,8 +91,8 @@ export default function CadastroPage({ setPage }) {
           <div className="cadastro-form-panel">
             <div className="auth-card cadastro-auth-card">
               {isFacilitador
-                ? <FacilitadorForm setPage={setPage} />
-                : <EstudanteForm setPage={setPage} />
+                ? <FacilitadorForm />
+                : <EstudanteForm />
               }
             </div>
           </div>

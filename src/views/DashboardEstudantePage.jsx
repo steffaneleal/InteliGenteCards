@@ -1,7 +1,13 @@
+'use client'
+
+import { useRouter } from 'next/navigation'
+import { ROUTES, NEXT_ROLE_ROUTE } from '@/lib/routes'
+import { FEATURES } from '@/config/features'
 import { useState } from 'react'
 import DashboardShell from '../components/DashboardShell'
 import PerfilForm from '../components/PerfilForm'
 import Modal from '../components/Modal'
+import CartasJogoView from '../components/CartasJogoView'
 import { estudante_MOCK, TRILHA_META } from '../data/dashboardData'
 import {
   HomeIcon, FolderIcon, TrackMiniIcon, EventIcon, ForumIcon, UserGearIcon,
@@ -16,10 +22,12 @@ const NAV = [
   { id: 'ranking', label: 'Ranking', icon: <TrophyIcon /> },
   { id: 'forum', label: 'Fórum', icon: <ForumIcon /> },
   { id: 'perfil', label: 'Meu Perfil', icon: <UserGearIcon /> },
-]
+].filter((item) => item.id !== 'ranking' || FEATURES.ranking)
 
-export default function DashboardestudantePage({ setPage, onSwitchRole }) {
+export default function DashboardEstudantePage() {
+  const router = useRouter()
   const [active, setActive] = useState('inicio')
+  const [jogoAberto, setJogoAberto] = useState(false)
   const [pin, setPin] = useState('')
   const [searchEvento, setSearchEvento] = useState('')
   const [selectedEvento, setSelectedEvento] = useState('')
@@ -54,6 +62,10 @@ export default function DashboardestudantePage({ setPage, onSwitchRole }) {
     ))
   }
 
+  if (jogoAberto) {
+    return <CartasJogoView user={user} onClose={() => setJogoAberto(false)} />
+  }
+
   return (
     <DashboardShell
       role="estudante"
@@ -63,8 +75,8 @@ export default function DashboardestudantePage({ setPage, onSwitchRole }) {
       user={user}
       pageTitle={isPerfil ? 'Meu Perfil' : `Olá, ${user.name.split(' ')[0]}`}
       pageSubtitle={isPerfil ? 'Atualize seus dados e sua senha de acesso.' : 'Pronta para continuar sua jornada em IA ética?'}
-      onLogout={() => setPage('home')}
-      onSwitchRole={onSwitchRole}
+      onLogout={() => router.push(ROUTES.home)}
+      onSwitchRole={() => router.push(NEXT_ROLE_ROUTE.estudante)}
       notifications={notifications}
       onNotificationRead={handleNotificationRead}
     >
@@ -140,7 +152,7 @@ export default function DashboardestudantePage({ setPage, onSwitchRole }) {
                 desenvolvimento e discussão — com o apoio do assistente de IA até
                 gerar o artefato final da sua solução.
               </p>
-              <button className="dash-btn dash-btn-orange dash-hero-btn">Criar</button>
+              <button className="dash-btn dash-btn-orange dash-hero-btn" onClick={() => setJogoAberto(true)}>Criar</button>
             </section>
 
             <section className="dash-card dash-hero-card">
@@ -194,7 +206,7 @@ export default function DashboardestudantePage({ setPage, onSwitchRole }) {
             {/* Meus projetos */}
             <section className="dash-card dash-table-card">
               <div className="dash-section-head">
-                <h2>Meus projetos</h2>
+                <h2>Meus Projetos</h2>
                 <button className="dash-link" onClick={() => setActive('projetos')}>Ver todos <ChevronRightIcon /></button>
               </div>
               <table className="dash-table">
@@ -223,7 +235,7 @@ export default function DashboardestudantePage({ setPage, onSwitchRole }) {
             {/* Meus eventos */}
             <section className="dash-card">
               <div className="dash-section-head">
-                <h2>Meus eventos</h2>
+                <h2>Meus Eventos</h2>
                 <button className="dash-link" onClick={() => setActive('eventos')}>Ver todos <ChevronRightIcon /></button>
               </div>
 

@@ -1,13 +1,11 @@
+'use client'
+
 import { useMemo, useState } from 'react'
 import CartaForm from './CartaForm'
 import ConfirmDialog from './ConfirmDialog'
 import { PlusIcon, EditIcon, TrashIcon, SearchIcon } from '../icons'
 
-/**
- * View completa de gestão de cartas: lista todas as cartas cadastradas,
- * com busca, criação (formulário inline, nesta própria página), edição
- * e exclusão.
- */
+// View completa de gestão de cartas: lista todas as cartas cadastradas, com busca, criação (formulário inline, nesta própria página), edição e exclusão.
 export default function CartasView({ perguntas, trilhas, trilhaByKey, onCreate, onUpdate, onDelete }) {
   const [busca, setBusca] = useState('')
   const [panel, setPanel] = useState(null) // { mode: 'create'|'edit', data? }

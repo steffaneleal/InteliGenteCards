@@ -1,3 +1,5 @@
+'use client'
+
 import { useMemo, useState } from 'react'
 import Modal from './Modal'
 import ConfirmDialog from './ConfirmDialog'

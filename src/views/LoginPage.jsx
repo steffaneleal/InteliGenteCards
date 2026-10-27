@@ -1,7 +1,12 @@
+'use client'
+
+import { useRouter } from 'next/navigation'
+import { ROUTES } from '@/lib/routes'
 import { useEffect, useState } from 'react'
 import Footer from '../components/Footer'
 
-export default function LoginPage({ setPage, onLoginSuccess }) {
+export default function LoginPage() {
+  const router = useRouter()
   const [email, setEmail] = useState('')
   const [senha, setSenha] = useState('')
   const [showSenha, setShowSenha] = useState(false)
@@ -64,14 +69,14 @@ export default function LoginPage({ setPage, onLoginSuccess }) {
               className="auth-input"
             />
             <button className="auth-show-pass" onClick={() => setShowSenha(s => !s)} tabIndex={-1}>
-              {showSenha ? <img src="src/assets/icone-show.png" width="15" alt="Mostrar senha" /> : <img src="src/assets/icone-hide.png" width="15" alt="Esconder senha" />}
+              {showSenha ? <img src="/assets/icone-show.png" width="15" alt="Mostrar senha" /> : <img src="/assets/icone-hide.png" width="15" alt="Esconder senha" />}
             </button>
           </div>
           <button className="auth-forgot" onClick={() => {}}>Esqueceu a senha?</button>
-          <button className="btn-primary auth-btn" onClick={() => onLoginSuccess?.()}>Entrar</button>
+          <button className="btn-primary auth-btn" onClick={() => router.push(ROUTES.estudante)} /* TODO: autenticar via API e redirecionar conforme o perfil */>Entrar</button>
           <p className="auth-switch">
             Ainda não tem uma conta?{' '}
-            <button className="auth-link" onClick={() => setPage('cadastro')}>Cadastre-se!</button>
+            <button className="auth-link" onClick={() => router.push(ROUTES.cadastro)}>Cadastre-se!</button>
           </p>
         </div>
       </div>

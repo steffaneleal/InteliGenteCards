@@ -1,3 +1,8 @@
+'use client'
+
+import { useRouter } from 'next/navigation'
+import { ROUTES, NEXT_ROLE_ROUTE } from '@/lib/routes'
+import { FEATURES } from '@/config/features'
 import { useState } from 'react'
 import DashboardShell from '../components/DashboardShell'
 import PerfilForm from '../components/PerfilForm'
@@ -14,9 +19,10 @@ const NAV = [
   { id: 'ranking', label: 'Ranking', icon: <TrophyIcon /> },
   { id: 'forum', label: 'Fórum', icon: <ForumIcon /> },
   { id: 'perfil', label: 'Meu Perfil', icon: <UserGearIcon /> },
-]
+].filter((item) => item.id !== 'ranking' || FEATURES.ranking)
 
-export default function DashboardFacilitadorPage({ setPage, onSwitchRole }) {
+export default function DashboardFacilitadorPage() {
+  const router = useRouter()
   const [active, setActive] = useState('inicio')
   const [showNovoEvento, setShowNovoEvento] = useState(false)
   const [searchEvento, setSearchEvento] = useState('')
@@ -24,7 +30,7 @@ export default function DashboardFacilitadorPage({ setPage, onSwitchRole }) {
   const [rankingModalOpen, setRankingModalOpen] = useState(false)
   const [notifications, setNotifications] = useState([
     { id: 'fac-1', title: 'Participantes confirmados', detail: '12 estudantes se inscreveram no Workshop IA na Escola.', targetTab: 'eventos', read: false },
-    { id: 'fac-2', title: 'Feedback pendente', detail: 'Há 3 projetos aguardando revisão de sua turma.', targetTab: 'ranking', read: false },
+    { id: 'fac-2', title: 'Feedback pendente', detail: 'Há 3 projetos aguardando revisão de sua turma.', targetTab: 'eventos', read: false },
   ])
   const { user, stats, eventos, ranking, forum } = FACILITADOR_MOCK
   const isPerfil = active === 'perfil'
@@ -57,8 +63,8 @@ export default function DashboardFacilitadorPage({ setPage, onSwitchRole }) {
       user={user}
       pageTitle={isPerfil ? 'Meu Perfil' : `Olá, Prof. ${user.name.split(' ')[0]}`}
       pageSubtitle={isPerfil ? 'Atualize seus dados e sua senha de acesso.' : 'Acompanhe seus eventos e a evolução das turmas.'}
-      onLogout={() => setPage('home')}
-      onSwitchRole={onSwitchRole}
+      onLogout={() => router.push(ROUTES.home)}
+      onSwitchRole={() => router.push(NEXT_ROLE_ROUTE.facilitador)}
       notifications={notifications}
       onNotificationRead={handleNotificationRead}
     >
@@ -147,6 +153,7 @@ export default function DashboardFacilitadorPage({ setPage, onSwitchRole }) {
             <p className="dash-stat-label">Projetos submetidos</p>
           </div>
         </div>
+        {FEATURES.ranking && (
         <div className="dash-stat-card">
           <span className="dash-stat-icon"><TrophyIcon /></span>
           <div>
@@ -154,6 +161,7 @@ export default function DashboardFacilitadorPage({ setPage, onSwitchRole }) {
             <p className="dash-stat-label">Nota média</p>
           </div>
         </div>
+        )}
       </div>
 
       {/* Meus eventos */}
@@ -217,7 +225,8 @@ export default function DashboardFacilitadorPage({ setPage, onSwitchRole }) {
       </section>
 
       <div className="dash-grid-2">
-        {/* Ranking */}
+        {/* Ranking (pós-MVP) */}
+        {FEATURES.ranking && (
         <section className="dash-card">
           <div className="dash-section-head">
             <h2>Ranking — Workshop IA na Escola</h2>
@@ -233,6 +242,7 @@ export default function DashboardFacilitadorPage({ setPage, onSwitchRole }) {
             ))}
           </ol>
         </section>
+        )}
 
         {/* Fórum */}
         <section className="dash-card">

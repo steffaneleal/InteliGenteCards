@@ -1,3 +1,5 @@
+'use client'
+
 import Modal from './Modal'
 import { AlertTriangleIcon } from '../icons'
 

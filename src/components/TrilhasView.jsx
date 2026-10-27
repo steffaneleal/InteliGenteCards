@@ -1,3 +1,5 @@
+'use client'
+
 import { useMemo, useState } from 'react'
 import TrilhaForm from './TrilhaForm'
 import ConfirmDialog from './ConfirmDialog'

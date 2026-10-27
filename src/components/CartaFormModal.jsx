@@ -1,12 +1,11 @@
+'use client'
+
 import { useState } from 'react'
 import Modal from './Modal'
 
 const emptyErrors = { titulo: '', trilha: '' }
 
-/**
- * Modal de criação / edição de carta (pergunta) de uma trilha.
- * `trilhaOptions`: [{ key, titulo, color }]
- */
+// Modal de criação / edição de carta (pergunta) de uma trilha. `trilhaOptions`: [{ key, titulo, color }]
 export default function CartaFormModal({ mode, initialData, trilhaOptions, onSubmit, onClose }) {
   const isEdit = mode === 'edit'
   const [titulo, setTitulo] = useState(initialData?.titulo || '')

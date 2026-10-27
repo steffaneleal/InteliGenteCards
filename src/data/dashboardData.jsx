@@ -11,7 +11,7 @@ export const TRILHA_META = {
 // ---------- estudante ----------
 
 export const estudante_MOCK = {
-  user: { name: 'Stéffane Leal', initials: 'SL', email: 'steffane.leal@gmail.com.br', escola: 'E.E. Dona Ana Rosa de Araújo' },
+  user: { name: 'Estudante', initials: 'E', email: 'steffane.leal@gmail.com.br', escola: 'E.E. Dona Ana Rosa de Araújo' },
   progresso: [
     { trilha: 'ideacao', percent: 100 },
     { trilha: 'etica', percent: 75 },
@@ -42,7 +42,7 @@ export const estudante_MOCK = {
 // ---------- Facilitador ----------
 
 export const FACILITADOR_MOCK = {
-  user: { name: 'Rosângela', initials: 'RM', email: 'rosangela@escola.edu.br', estado: 'Paraná', cargo: 'Professora de Matemática' },
+  user: { name: 'Facilitador', initials: 'F', email: 'rosangela@escola.edu.br', estado: 'Paraná', cargo: 'Professora de Matemática' },
   stats: { eventosAtivos: 3, participantes: 87, projetosSubmetidos: 41, notaMedia: 8.4 },
   eventos: [
     { id: 1, nome: 'Workshop IA na Escola', visibilidade: 'PIN', pin: '4821', participantes: 32, status: 'Aberto' },
@@ -66,7 +66,7 @@ export const FACILITADOR_MOCK = {
 // ---------- Super Admin ----------
 
 export const ADMIN_MOCK = {
-  user: { name: 'Robson Bonídia', initials: 'RB' },
+  user: { name: 'Super Admin', initials: 'SA  ' },
   metrics: { usuarios: 1284, eventos: 37, projetos: 512, facilitadoresPendentes: 3 },
   conteudo: {
     perguntas: [

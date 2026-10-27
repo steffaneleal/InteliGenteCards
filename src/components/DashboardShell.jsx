@@ -1,3 +1,5 @@
+'use client'
+
 import { useState } from 'react'
 import { MenuIcon, CloseIcon, BellIcon, LogoutIcon, ChevronRightIcon } from '../icons'
 

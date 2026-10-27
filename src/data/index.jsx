@@ -1,9 +1,8 @@
 import { IdeaIcon, EthicsIcon, DevIcon, DiscussIcon } from '../icons'
-import cardTrilha1 from '../assets/images/card-trilha1.png'
-import cardTrilha2 from '../assets/images/card-trilha2.png'
-import cardTrilha3 from '../assets/images/card-trilha3.png'
-import cardTrilha4 from '../assets/images/card-trilha4.png'
-
+const cardTrilha1 = '/assets/images/card-trilha1.png'
+const cardTrilha2 = '/assets/images/card-trilha2.png'
+const cardTrilha3 = '/assets/images/card-trilha3.png'
+const cardTrilha4 = '/assets/images/card-trilha4.png'
 export const TRILHAS = [
   {
     id: 'ideacao',

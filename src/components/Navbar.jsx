@@ -1,3 +1,7 @@
+'use client'
+
+import { useRouter, usePathname } from 'next/navigation'
+import { ROUTES } from '@/lib/routes'
 import { useState, useEffect } from 'react'
 import { MenuIcon, CloseIcon } from '../icons'
 
@@ -32,8 +36,13 @@ const scrollToSection = (id) => {
   if (el) el.scrollIntoView({ behavior: 'smooth' })
 }
 
-export default function Navbar({ page, setPage, mobileOpen, setMobileOpen }) {
+export default function Navbar() {
+  const router = useRouter()
+  const pathname = usePathname()
+  const [mobileOpen, setMobileOpen] = useState(false)
   const [activeSection, setActiveSection] = useState(null)
+
+  const page = pathname === ROUTES.login ? 'login' : pathname === ROUTES.cadastro ? 'cadastro' : 'home'
 
   const pageLinkActive = ACTIVE_MAP[page] || 'Início'
   const active = activeSection || pageLinkActive
@@ -59,17 +68,17 @@ export default function Navbar({ page, setPage, mobileOpen, setMobileOpen }) {
     setMobileOpen(false)
     const sectionId = SECTION_MAP[link]
     if (sectionId) {
-      if (page !== 'home') { setPage('home'); setTimeout(() => scrollToSection(sectionId), 120) }
+      if (page !== 'home') { router.push(ROUTES.home); setTimeout(() => scrollToSection(sectionId), 400) }
       else scrollToSection(sectionId)
       return
     }
-    setPage(PAGE_MAP[link] || 'home')
+    router.push(PAGE_MAP[link] ? ROUTES[PAGE_MAP[link]] : ROUTES.home)
   }
 
   return (
     <>
       <nav className="nav" role="navigation" aria-label="Menu principal">
-        <button className="nav-logo" onClick={() => setPage('home')} aria-label="Ir para página inicial">
+        <button className="nav-logo" onClick={() => router.push(ROUTES.home)} aria-label="Ir para página inicial">
           RefletIA
         </button>
 

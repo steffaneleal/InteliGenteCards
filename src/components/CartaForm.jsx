@@ -1,11 +1,10 @@
+'use client'
+
 import { useState } from 'react'
 
 const emptyErrors = { titulo: '', trilha: '' }
 
-/**
- * Formulário de criação / edição de carta, renderizado inline dentro da
- * view "Cartas" — não é um modal, faz parte do fluxo da própria página.
- */
+// Formulário de criação / edição de carta, renderizado inline dentro da view "Cartas"
 export default function CartaForm({ mode, initialData, trilhaOptions, onSubmit, onCancel }) {
   const isEdit = mode === 'edit'
   const [titulo, setTitulo] = useState(initialData?.titulo || '')

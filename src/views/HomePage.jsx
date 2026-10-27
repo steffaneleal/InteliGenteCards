@@ -1,22 +1,27 @@
+'use client'
+
+import { useRouter } from 'next/navigation'
+import { ROUTES } from '@/lib/routes'
 import { useEffect } from 'react'
 import { TRILHAS, FAQS, FUNCIONALIDADES } from '../data'
 import TrilhaItem from '../components/TrilhaItem'
 import FAQItem from '../components/FAQItem'
 import Footer from '../components/Footer'
 import { CardsIcon, AIIcon, PDFIcon, CollabIcon } from '../icons'
-import heroImg from '../assets/hero.png'
-import capaFrente from '../assets/images/capa-frente.png'
-import capaVerso from '../assets/images/capa-verso.png'
-import bgGif from '../assets/images/bg.gif'
-
+const heroImg = '/assets/hero.png'
+const capaFrente = '/assets/images/capa-frente.png'
+const capaVerso = '/assets/images/capa-verso.png'
+const bgGif = '/assets/images/bg.gif'
 const FUNC_ICONS = {
-  cartas: <img src="\src\assets\icone-cards-branco.png" width="40" alt="Cartas" />,
-  ai: <img src="\src\assets\icone-maritaca.png" width="40" alt="AI" />,
-  pdf: <img src="\src\assets\icone-pdf.png" width="35" alt="PDF" />,
-  collab: <img src="\src\assets\icone-globo.png" width="35" alt="Collab" />,
+  cartas: <img src="/assets/icone-cards-branco.png" width="40" alt="Cartas" />,
+  ai: <img src="/assets/icone-maritaca.png" width="40" alt="AI" />,
+  pdf: <img src="/assets/icone-pdf.png" width="35" alt="PDF" />,
+  collab: <img src="/assets/icone-globo.png" width="35" alt="Collab" />,
 }
 
-export default function HomePage({ setPage }) {
+export default function HomePage() {
+  const router = useRouter()
+
   useEffect(() => {
     const target = document.querySelector('.hero-bg.finisher-header')
     if (!target || target.querySelector('canvas')) return
@@ -65,7 +70,7 @@ export default function HomePage({ setPage }) {
               Explore a inteligência artificial de forma prática, colaborativa e responsável através
               de dinâmicas interativas com cartas digitais.
             </p>
-            <button className="btn-primary-hero hero-cta" onClick={() => setPage('cadastro')}>
+            <button className="btn-primary-hero hero-cta" onClick={() => router.push(ROUTES.cadastro)}>
               Começar Agora
             </button>
           </div>
