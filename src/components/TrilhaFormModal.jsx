@@ -3,8 +3,7 @@
 import { useState } from 'react'
 import Modal from './Modal'
 
-// Paleta de cores da identidade visual do InteliGenteCards, usada nos
-// distintivos (badges) de trilha em toda a plataforma.
+// Paleta de cores da identidade visual do InteliGenteCards, usada nas badges
 export const TRILHA_COLOR_PALETTE = [
   '#F79C5A', '#FBD160', '#f17419', '#F1A5C1', '#8fb3e8', '#e07b3a', '#a78bfa', '#6fcf97',
 ]

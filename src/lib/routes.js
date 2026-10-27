@@ -1,4 +1,5 @@
-// Rotas da aplicação em um único lugar. As páginas reais ficam em src/app/.
+// Rotas
+// As páginas ficam em src/app/.
 export const ROUTES = {
   home: '/',
   login: '/login',
@@ -9,7 +10,7 @@ export const ROUTES = {
 }
 
 // TEMPORÁRIO: usado pelo botão "Ver como outro perfil".
-// TODO: remover quando a autenticação (JWT) estiver implementada.
+// TODO: não esquecer de remover quando a autenticação JWT estiver implementada.
 export const NEXT_ROLE_ROUTE = {
   estudante: ROUTES.facilitador,
   facilitador: ROUTES.admin,

@@ -8,10 +8,7 @@ export const TRILHA_COLOR_PALETTE = [
 
 const emptyErrors = { titulo: '' }
 
-/**
- * Formulário de criação / edição de trilha, renderizado inline dentro da
- * view "Trilhas" — não é um modal, faz parte do fluxo da própria página.
- */
+// Forms de criação / edição de trilha, renderizado inline dentro da view "Trilhas" .
 export default function TrilhaForm({ mode, initialData, onSubmit, onCancel }) {
   const isEdit = mode === 'edit'
   const [titulo, setTitulo] = useState(initialData?.titulo || '')

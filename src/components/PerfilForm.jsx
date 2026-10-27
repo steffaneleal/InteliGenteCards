@@ -3,7 +3,7 @@
 import { useState } from 'react'
 import { EyeOffIcon } from '../icons'
 
-/* Formulário de edição de perfil: dados pessoais + troca de senha. */
+// Formulário de edição de perfil: dados pessoais + troca de senha.
 export default function PerfilForm({ user, escolaLabel = 'Escola / Instituição', showEstadoCargo = false }) {
   const [nome, setNome] = useState(user.name)
   const [email, setEmail] = useState(user.email || '')

@@ -1,10 +1,26 @@
 # RefletIA
 
-Plataforma web do InteliGenteCards Virtual (TCC - UTFPR Cornélio Procópio). Next.js (App Router) + React.
+## 🚀 Como Rodar o Projeto
 
-## Como rodar
+### Pré-requisitos
 
-Pré-requisito: Node.js 18.18 ou superior.
+Antes de iniciar, certifique-se de ter instalado em sua máquina:
+
+1. **[Node.js](https://nodejs.org/)** (v18.x ou superior)
+2. **npm** (incluído com o Node.js)
+
+---
+
+### ⚙️ Configuração do Ambiente
+
+#### 1. Clone o repositório
+
+```bash
+git clone https://github.com/steffaneleal/InteliGenteCards.git
+cd InteliGenteCards
+```
+
+#### 2. Instale as dependências
 
 ```bash
 npm install

@@ -1,4 +1,4 @@
-/* Eyebrow label — usado em HomePage (sobre, trilhas, func, faq) */
+/* Eyebrow label — HomePage (sobre, trilhas, func, faq) */
 .section-eyebrow {
   font-size: 0.75rem;
   font-weight: 600;
@@ -9,11 +9,11 @@
 }
 .section-eyebrow.light { color: rgba(255,255,255,0.6); }
 
-/* Section title — usado em HomePage */
+/* Section title — HomePage */
 .section-title { font-size: 2rem; font-weight: 700; color: var(--text); margin-bottom: 1rem; }
 .section-title.light { color: #fff; }
 
-/* Input — usado em LoginPage e CadastroPage */
+/* Input — LoginPage e CadastroPage */
 .input {
   width: 100%;
   padding: 14px 18px;
@@ -29,7 +29,7 @@
 .input::placeholder { color: #aaa; }
 .input:focus { box-shadow: 0 0 0 2px #e07b3a; }
 
-/* Buttons — usados em LoginPage, CadastroPage e HomePage */
+/* Buttons — LoginPage, CadastroPage e HomePage */
 .btn-primary {
   background: #2d3748;
   color: #fff;
@@ -62,7 +62,7 @@
 .btn-orange:hover { background: #c05e1c; }
 .btn-orange:active { transform: scale(0.97); }
 
-/* Auth base — usado em LoginPage e CadastroPage */
+/* Auth base — LoginPage e CadastroPage */
 .page-auth {
   min-height: 100vh;
   display: flex;

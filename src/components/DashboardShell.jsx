@@ -15,10 +15,7 @@ const ROLE_ACCENT = {
   admin: '#8fb3e8',
 }
 
-/**
- * Casca (shell) comum às três áreas logadas: sidebar de navegação + topbar.
- * `nav` recebe os itens do menu daquele perfil; `active` o id atual.
- */
+// Casca (shell) comum às três áreas logadas: sidebar de navegação + topbar. `nav` recebe os itens do menu daquele perfil; `active` o id atual.
 export default function DashboardShell({
   role,
   nav,
